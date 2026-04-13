@@ -17,8 +17,9 @@ const TimelineItem = ({ title, subtitle, meta, date, images, index }) => (
           {images.map((img, i) => (
             <source key={i} type={img.type} srcSet={img.srcSet} />
           ))}
+          {/* fallback img: use item with fallback:true, or last item as raster fallback */}
           <img
-            src={(images.find(img => img.fallback) || images[images.length - 1]).srcSet}
+            src={(images.find(img => img.fallback) ?? images[images.length - 1])?.srcSet}
             alt={subtitle}
             className="w-8 h-8 object-contain opacity-70"
           />

@@ -88,7 +88,7 @@ function Header() {
         initial={{ x: '100%' }}
         animate={{ x: menuOpen ? '0%' : '100%' }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="lg:hidden flex flex-col fixed top-0 left-0 w-full bg-custom-dark border-r border-[#1a1a1a] p-8 z-40 min-h-screen"
+        className={`lg:hidden flex flex-col fixed top-0 left-0 w-full bg-custom-dark border-r border-[#1a1a1a] p-8 z-40 min-h-screen ${menuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
       >
         <ul className="flex flex-col gap-6 mt-20">
           {navLinks.map(nav => (
