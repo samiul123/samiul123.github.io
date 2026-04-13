@@ -1,8 +1,7 @@
 import {github, show} from "../assets"; // Ensure you import other assets as needed
 import { styles } from "../styles";
 import {projects} from "../constants";
-import {Fragment, useEffect, useState} from "react";
-import {chunkArray} from "../utils/helpers";
+import {Fragment, useState} from "react";
 import {motion} from "framer-motion";
 import {fadeIn, staggerContainer} from "../utils/motion";
 
