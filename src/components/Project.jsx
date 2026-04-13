@@ -1,11 +1,10 @@
-import {projectBg, github, show, hide, projectWebp} from "../assets"; // Ensure you import other assets as needed
+import {github, show} from "../assets"; // Ensure you import other assets as needed
 import { styles } from "../styles";
 import {projects} from "../constants";
 import {Fragment, useEffect, useState} from "react";
 import {chunkArray} from "../utils/helpers";
 import {motion} from "framer-motion";
 import {fadeIn, staggerContainer} from "../utils/motion";
-import Background from "./Background";
 
 const ProjectCard = ({
                          id,
@@ -22,7 +21,7 @@ const ProjectCard = ({
         <motion.div
             variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
             className={`relative ${
-                active === id ? 'lg:flex-[3] flex-[10]' : 'lg:flex-[1] flex-[1]'
+                active === id ? 'lg:flex-[3] flex-[10] ring-1 ring-custom-green' : 'lg:flex-[1] flex-[1]'
             } flex items-center justify-center h-[420px] cursor-pointer rounded-b-[24px] overflow-hidden`}
             onClick={() => handleClick(id)}
         >
@@ -52,7 +51,7 @@ const ProjectCard = ({
                 </div>
             ) : (
                 <div
-                    className="absolute bottom-0 p-8 justify-start w-full flex-col rounded-b-[24px] bg-custom-gray opacity-80 z-10">
+                    className="absolute bottom-0 p-8 justify-start w-full flex-col rounded-b-[24px] bg-custom-dark/90 opacity-80 z-10">
                     <div className="absolute inset-0 flex justify-end m-5">
                         <div
                             onClick={() => window.open(githubUrl, '_blank')}
@@ -104,24 +103,14 @@ const ProjectCard = ({
 
 export const Project = (props) => {
     const [active, setActive] = useState('mindquest');
-    const images = [{
-        type: "image/webp",
-        srcSet: projectWebp,
-        fallback: false
-    }, {
-        type: "image/jpeg",
-        srcSet: projectBg,
-        fallback: true
-    }]
     return (
         <div id={props.id}
              key={props.id}
-             className="relative p-10 h-auto bg-cover text-white flex flex-col items-center justify-center space-y-10"
+             className="relative p-10 h-auto bg-custom-dark text-white flex flex-col items-center justify-center space-y-10"
         >
-            <Background images={images}/>
             <h2 className={styles.pageTitle}>PROJECTS</h2>
             <motion.div
-                variants={staggerContainer}
+                variants={staggerContainer()}
                     initial="hidden"
                     whileInView="show"
                     viewport={{once: false, amount: 0.25}}
