@@ -59,7 +59,7 @@ const Home = (props) => (
 
       {/* Right column: photo — hidden on mobile */}
       <motion.div variants={driftUp(0.3)} className="hidden lg:flex justify-center">
-        <div className="w-72 h-72 rounded-full border-[1.5px] border-custom-green overflow-hidden">
+        <div className="w-72 h-72 rounded-lg overflow-hidden">
           <picture className="w-full h-full">
             <source type="image/webp" srcSet={samiulWebp} />
             <img
