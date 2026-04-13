@@ -11,7 +11,7 @@ import {styles} from "../styles";
 export const Contact = (props) => {
     const captchaRef = useRef(null);
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: false, amount: 0.25 });
+    const isInView = useInView(ref, { once: true, amount: 0.25 });
     const formRef = useRef();
     const [form, setForm] = useState({
         name: '',
@@ -89,7 +89,6 @@ export const Contact = (props) => {
                     message: 'Something went wrong. Please try again.'
                 })
                 captchaRef.current.reset();
-                console.log(error);
             }
         )
 
@@ -128,7 +127,6 @@ export const Contact = (props) => {
                 <motion.div
                     initial="hidden"
                     animate={isInView ? "show" : "hidden"}
-                    viewport={{ once: false, amount: .25 }}
                     variants={driftUp(0.2)}
                     className="flex flex-col sm:flex-row gap-5 items-center justify-center">
                     <div className="bg-[#0e0e0e] border border-[#1a1a1a] flex-[.75] p-4 sm:p-8 rounded-lg lg:min-w-[700px] md:min-w-[600px] min-w-[300px]">
@@ -142,7 +140,7 @@ export const Contact = (props) => {
                                     className={`${error?.message !== '' ? 'bg-red-500' : 'bg-custom-green-v2'} p-2 gap-2 flex 
                             rounded-lg w-fit mx-auto items-center justify-center mb-3`}>
                                     {error?.message || success}
-                                    <button type="submit"
+                                    <button type="button"
                                             onClick={handleClose}
                                             className="w-[15px] h-[15px]">
                                         <img src={close} alt="close" className="object-contain"/>

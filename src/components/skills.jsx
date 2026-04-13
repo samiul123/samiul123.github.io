@@ -6,7 +6,7 @@ const SkillCard = ({ name, images, index }) => (
   <motion.div
     variants={driftUp(index * 0.05)}
     whileHover={{ y: -3 }}
-    className="flex flex-col items-center gap-2 p-3 border border-[#1a1a1a] rounded-lg bg-[#0e0e0e] hover:border-[#333] transition-colors cursor-default"
+    className="flex flex-col items-center gap-2 p-3 border border-[#1a1a1a] rounded-lg bg-[#0e0e0e] hover:border-[#222] transition-colors cursor-default"
   >
     {images && images.length > 0 && (
       <picture className="w-8 h-8">

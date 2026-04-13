@@ -25,9 +25,6 @@ const ProjectCard = ({
             } flex items-center justify-center h-[420px] cursor-pointer rounded-b-[24px] overflow-hidden`}
             onClick={() => handleClick(id)}
         >
-            {/*<div className="absolute top-0 left-0 w-full h-full bg-custom-gray opacity-80"></div>*/}
-
-            {/*TODO: use background component*/}
             <picture className="absolute w-full h-full object-cover rounded-b-[24px]">
                 {images.map((image, index) => (
                     <Fragment key={index}>
@@ -105,7 +102,6 @@ export const Project = (props) => {
     const [active, setActive] = useState('mindquest');
     return (
         <div id={props.id}
-             key={props.id}
              className="relative p-10 h-auto bg-custom-dark text-white flex flex-col items-center justify-center space-y-10"
         >
             <h2 className={styles.pageTitle}>PROJECTS</h2>
@@ -113,7 +109,7 @@ export const Project = (props) => {
                 variants={staggerContainer()}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{once: false, amount: 0.25}}
+                    viewport={{once: true, amount: 0.25}}
                     className={`${styles.innerWidth} mx-auto flex flex-col`}>
                     <div className="flex lg:flex-row flex-col max-w-6xl lg:min-h-[40vh] min-h-[70vh] gap-5 p-8">
                         {projects.map((project, index) => (
