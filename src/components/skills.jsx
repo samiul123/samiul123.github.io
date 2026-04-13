@@ -1,157 +1,71 @@
-import {skillsBg, skillsWebp} from "../assets";
-import {skillGroups} from "../constants";
-import {motion, useInView} from "framer-motion";
-import React, {Fragment, useEffect, useRef, useState} from "react";
-import {styles} from "../styles";
-import {Slide} from "react-slideshow-image";
-import 'react-slideshow-image/dist/styles.css'
-import {chunkArray} from "../utils/helpers";
-import Background from "./Background";
+import { motion } from 'framer-motion';
+import { skillGroups } from '../constants';
+import { driftUp, staggerContainer } from '../utils/motion';
 
-const SkillGroup = (props) => {
-    const [hoveredItem, setHoveredItem] = useState(null);
-    const groupRef = useRef(null);
-    const inView = useInView(groupRef, {once: false, amount: .5})
+const SkillCard = ({ name, images, index }) => (
+  <motion.div
+    variants={driftUp(index * 0.05)}
+    whileHover={{ y: -3 }}
+    className="flex flex-col items-center gap-2 p-3 border border-[#1a1a1a] rounded-lg bg-[#0e0e0e] hover:border-[#222] transition-colors cursor-default"
+  >
+    {images && images.length > 0 && (
+      <picture className="w-8 h-8">
+        {images.filter(img => !img.fallback).map((img, i) => (
+          <source key={i} type={img.type} srcSet={img.srcSet} />
+        ))}
+        <img
+          src={(images.find(img => img.fallback) ?? images[images.length - 1])?.srcSet}
+          alt={name}
+          className="w-8 h-8 object-contain"
+        />
+      </picture>
+    )}
+    <span className="text-[9px] tracking-[1px] text-gray-500 text-center">{name}</span>
+  </motion.div>
+);
 
+const SkillCategory = ({ title, items }) => (
+  <motion.div
+    variants={staggerContainer()}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.2 }}
+    className="mb-14"
+  >
+    <motion.p variants={driftUp(0)} className="text-xs tracking-[3px] text-custom-green uppercase mb-5">
+      — {title}
+    </motion.p>
+    <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+      {items.map((item, i) => (
+        <SkillCard key={item.id || item.name} name={item.name} images={item.images} index={i} />
+      ))}
+    </div>
+  </motion.div>
+);
 
-    const handleMouseEnter = (item) => {
-        setHoveredItem(item);
-    };
-
-    const handleMouseLeave = () => {
-        setHoveredItem(null);
-    };
-
-    useEffect(() => {
-        if (inView) {
-            setHoveredItem(null);
-        }
-    }, [inView, props.group.title]);
-
-    useEffect(() => {
-        return () => setHoveredItem(null);
-    }, []);
-
-    return (
-        <motion.div
-            ref={groupRef}
-            key={props.index}
-            className="mx-auto flex-1 p-4 relative overflow-hidden transition duration-300 ease-in-out transform"
-            onMouseEnter={() => props.handleGroupMouseEnter(props.group)}
-            onMouseLeave={props.handleGroupMouseLeave}
-            initial={{opacity: 0}}
-            animate={{opacity: props.isInView ? 1 : 0}}
-            transition={{duration: 0.5, delay: props.index * 0.2}}>
-            <h4 className="mb-2 text-center">{props.group.title}</h4>
-            <motion.div
-                className="h-0.5 bg-white mb-5 mx-auto"
-                initial={{width: '20%'}}
-                animate={{width: props.isGroupHovered ? '70%' : '20%'}}
-                transition={{duration: 0.3}}
-            />
-            <div className="grid grid-cols-3 gap-4">
-                {props.group.items.map((item, i) => (
-                    <motion.div
-                        key={i}
-                        onMouseEnter={() => handleMouseEnter(item)}
-                        onMouseLeave={handleMouseLeave}
-                        className="w-12 h-auto mx-auto"
-                        whileHover={{scale: 1.25}}
-                        transition={{duration: 0.3}}
-                    >
-                        <picture>
-                            {
-                                item.images.map((image, index) => (
-                                    <Fragment key={`${i}_${index}`}>
-                                        <source type={image.type} srcSet={image.srcSet}/>
-                                        {image.fallback && <img src={image.srcSet} alt={item.name}
-                                                                className="w-full h-full object-contain"/>}
-                                    </Fragment>
-                                ))
-                            }
-                        </picture>
-                    </motion.div>
-
-                ))}
-            </div>
-            {/*<div className="flex items-center justify-center mt-5 z-20">{hoveredItem?.name}</div>*/}
-        </motion.div>
-    )
-}
-
-const Skills = (props) => {
-    const [hoveredGroup, setHoveredGroup] = useState(null);
-    const [chunkedSkillGroups, setChunkedSkillGroups] = useState([]);
-    const [chunkSize, setChunkSize] = useState(0);
-    const images = [{
-        type: "image/webp",
-        srcSet: skillsWebp,
-        fallback: false
-        }, {
-        type: "image/jpeg",
-            srcSet: skillsBg,
-            fallback: true
-    }]
-
-    const handleGroupMouseEnter = (group) => {
-        setHoveredGroup(group);
-    };
-
-    const handleGroupMouseLeave = () => {
-        setHoveredGroup(null);
-    };
-
-    const handleResize = () => {
-        let chunkSize = 1;
-        if (window.innerWidth >= 1024) chunkSize = 4;
-        else if (window.innerWidth >= 640 && window.innerWidth < 1024) chunkSize = 2;
-        setChunkSize(chunkSize);
-        setChunkedSkillGroups(chunkArray(skillGroups, chunkSize));
-    };
-
-    useEffect(() => {
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const skillRef = useRef(null);
-    const isInView = useInView(skillRef, {amount: .25});
-
-    return (
-        <div
-            id={props.id}
-            ref={skillRef}
-            className="relative p-10 h-auto bg-cover text-white flex flex-col items-center justify-center space-y-10"
-            >
-            <Background images={images}/>
-            <h2 className={styles.pageTitle}>SKILLS</h2>
-            <div className="relative z-10 w-screen">
-                <Slide arrows={false}
-                       indicators={chunkSize < skillGroups.length}
-                       autoplay={chunkSize < skillGroups.length}
-                       canSwipe={chunkSize < skillGroups.length}
-                >
-                    {
-                        chunkedSkillGroups.map((pair, pairIndex) => (
-                            <div key={pairIndex} className="flex flex-wrap w-full">
-                                {pair.map((group, index) => (
-                                    <SkillGroup key={index}
-                                                index={index}
-                                                group={group}
-                                                isInView={isInView}
-                                                handleGroupMouseEnter={handleGroupMouseEnter}
-                                                handleGroupMouseLeave={handleGroupMouseLeave}
-                                                isGroupHovered={hoveredGroup === group}
-                                    />
-                                ))}
-                            </div>
-                        ))
-                    }
-                </Slide>
-            </div>
-        </div>
-    )
-}
+const Skills = (props) => (
+  <section id={props.id} className="bg-custom-dark text-white px-6 lg:px-20 py-20">
+    <motion.div
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="max-w-5xl mx-auto"
+    >
+      <motion.p variants={driftUp(0)} className="text-xs tracking-[4px] text-custom-green uppercase mb-3">
+        — What I Work With
+      </motion.p>
+      <motion.h2
+        variants={driftUp(0.05)}
+        className="font-lulo text-3xl lg:text-4xl font-black mb-14 text-white"
+      >
+        SKILLS
+      </motion.h2>
+      {(skillGroups || []).map(group => (
+        <SkillCategory key={group.title} title={group.title} items={group.items} />
+      ))}
+    </motion.div>
+  </section>
+);
 
 export default Skills;

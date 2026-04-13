@@ -1,3 +1,12 @@
+export const driftUp = (delay = 0, duration = 0.6) => ({
+    hidden: { opacity: 0, y: 20 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: { type: 'tween', ease: 'easeOut', delay, duration },
+    },
+});
+
 export const fadeIn = (direction, type, delay, duration) => {
     return {
         hidden: {
@@ -50,7 +59,7 @@ export const vibrate = {
     }
 };
 
-export const staggerContainer = (staggerChildren, delayChildren) => {
+export const staggerContainer = (staggerChildren = 0.1, delayChildren) => {
     return {
         hidden: {},
         show: {

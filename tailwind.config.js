@@ -8,7 +8,8 @@ module.exports = {
       colors: {
         'custom-gray': "#333b50",
         'custom-green': '#00d646',
-        'custom-green-v2': '#4CAF51'
+        'custom-green-v2': '#4CAF51',
+        'custom-dark': '#0a0a0a',
       },
       fontFamily: {
         lulo: ['Lulo', 'sans-serif'],

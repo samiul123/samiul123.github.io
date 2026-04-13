@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-padding-top: 80px;
+  }
+}
+
 @font-face {
   font-family: 'Lulo';
   src: url('./fonts/lulo-bold.ttf');
