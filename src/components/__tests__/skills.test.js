@@ -27,4 +27,5 @@ test('clicking Frameworks tab shows framework skills', () => {
   fireEvent.click(screen.getByRole('button', { name: 'Frameworks' }));
   expect(screen.getByText('REACT')).toBeInTheDocument();
   expect(screen.getByText('SPRING BOOT')).toBeInTheDocument();
+  expect(screen.queryByText('JAVA')).not.toBeInTheDocument();
 });
