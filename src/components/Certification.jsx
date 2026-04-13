@@ -21,20 +21,32 @@ export const Certification = (props) => (
         CERTIFICATIONS
       </motion.h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {certifications.map((cert, i) => (
+        {[...certifications]
+          .sort((a, b) => new Date(b.issueDate ?? b.date) - new Date(a.issueDate ?? a.date))
+          .map((cert, i) => (
           <motion.div
             key={i}
             variants={driftUp(i * 0.1)}
             whileHover={{ y: -3 }}
-            className="border border-[#1a1a1a] rounded-lg p-5 hover:border-[#333] transition-colors"
+            className="border border-[#1a1a1a] rounded-lg p-5 hover:border-[#333] transition-colors flex flex-col gap-2"
           >
-            <h3 className="text-white text-sm font-bold leading-snug mb-2">{cert.title}</h3>
-            <p className="text-gray-600 text-xs mb-4">{cert.issueDate ?? cert.date}</p>
+            {cert.issuerLogo && (
+              <div className="flex items-center gap-2 mb-1">
+                <img
+                  src={cert.issuerLogo}
+                  alt={cert.issuer}
+                  className="h-4 w-auto object-contain opacity-60"
+                />
+                <span className="text-gray-600 text-[10px] tracking-[2px] uppercase">{cert.issuer}</span>
+              </div>
+            )}
+            <h3 className="text-white text-sm font-bold leading-snug">{cert.title}</h3>
+            <p className="text-gray-600 text-xs">{cert.issueDate ?? cert.date}</p>
             <a
               href={cert.credentialUrl ?? cert.url ?? cert.link}
               target="_blank"
               rel="noreferrer"
-              className="text-xs tracking-[2px] text-custom-green hover:underline"
+              className="text-xs tracking-[2px] text-custom-green hover:underline mt-1"
             >
               VIEW CREDENTIAL →
             </a>

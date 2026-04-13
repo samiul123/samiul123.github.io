@@ -1,8 +1,8 @@
 import logo from './personal/logo.png';
 import logowebp from './personal/logo.webp';
 
-import samiul from './backgrounds/samiul-v2.png';
-import samiulWebp from './backgrounds/samiul-v2.webp';
+import samiul from './backgrounds/samiul-v3.png';
+import samiulWebp from './backgrounds/samiul-v3.png';
 import skillsBg from './backgrounds/skills-bg.jpg';
 import skillsWebp from './backgrounds/skills-bg.webp';
 import educationBg from './backgrounds/education-bg.jpg';
@@ -54,8 +54,6 @@ import buetwebp from './education/buet-logo.webp';
 import umd from './education/umd-logo.png';
 import umdwebp from './education/umd-logo.webp';
 
-import stiboDX from './experience/stiboDx.png';
-import stiboDXWebp from './experience/stiboDx.webp';
 import konasl from './experience/konasl.png';
 import konaslWebp from './experience/konasl.webp';
 import resume from './experience/resume.png';
@@ -134,7 +132,6 @@ export {
     umd,
     educationBg,
     educationWebp,
-    stiboDX,
     konasl,
     experienceBg,
     experienceWebp,
@@ -172,7 +169,6 @@ export {
     pythonwebp,
     buetwebp,
     umdwebp,
-    stiboDXWebp,
     konaslWebp,
     resumeWebp,
     algoxpertWebp,

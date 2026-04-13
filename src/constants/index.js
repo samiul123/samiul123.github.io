@@ -33,7 +33,6 @@ import {
     jira,
     buet,
     umd,
-    stiboDX,
     konasl,
     algoxpert,
     udemy,
@@ -52,7 +51,6 @@ import {
     pythonwebp,
     umdwebp,
     buetwebp,
-    stiboDXWebp,
     konaslWebp,
     systemxpertWebp,
     hadoopWebp,
@@ -471,7 +469,7 @@ const educations = [
         institution: 'University of Minnesota - Duluth',
         major: 'Computer Science',
         degree: 'Master of Science',
-        date: 'Aug 2023 - Present',
+        date: 'August 2023 - August 2025',
         logo: umd,
         images: [
             {
@@ -490,7 +488,7 @@ const educations = [
         institution: 'Bangladesh University of Engineering and Technology',
         major: 'Computer Science and Engineering',
         degree: 'Bachelor of Science',
-        date: 'Feb 2015 - Apr 2019',
+        date: 'February 2015 - April 2019',
         logo: buet,
         images: [
             {
@@ -511,17 +509,11 @@ const experiences = [
     {
         title: 'Software Engineer',
         company: 'Stibo DX',
-        date: 'Aug 2022 - Aug 2023',
-        logo: stiboDX,
+        date: 'August 2022 - August 2023',
         images: [
             {
-                type: "image/webp",
-                srcSet: stiboDXWebp,
-                fallback: false
-            },
-            {
-                type: "image/png",
-                srcSet: stiboDX,
+                type: "image/svg+xml",
+                srcSet: 'https://www.stibodx.com/wp-content/uploads/2025/09/stibo-dx-wordmark_white.svg',
                 fallback: true
             }
         ]
@@ -550,7 +542,7 @@ const publications = [
     {
         title: 'Exploring Challenges and Innovations in E-Commerce Recommendation Systems: A Comprehensive Review',
         conference: 'Congress on Intelligent Systems',
-        date: 'Mar 31, 2024',
+        date: 'March 31, 2024',
         url: 'https://link.springer.com/chapter/10.1007/978-981-99-9040-5_8',
         abstract: 'Recommendation systems play a pivotal role in the digital age, with ongoing ' +
             'research focused on enhancing their effectiveness. This paper delves into the common ' +
@@ -563,12 +555,21 @@ const publications = [
     }
 ]
 
+const awsLogo = 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg';
+
 const certifications = [
+    {
+        title: 'AWS Certified Developer – Associate',
+        issuer: 'Amazon Web Services',
+        issuerLogo: awsLogo,
+        issueDate: 'April 2025',
+        credentialUrl: 'https://www.credly.com/badges/7aa98d32-321a-4aa1-a710-f7bff85492ae',
+    },
     {
         title: 'Systems Expert Certificate',
         issuer: 'AlgoExpert',
         issuerLogo: algoxpert,
-        issueDate: 'Apr 2021',
+        issueDate: 'April 2021',
         image: systemxpert,
         credentialUrl: 'https://certificate.algoexpert.io/SE-f21fe4bd68',
         images: [
@@ -588,7 +589,7 @@ const certifications = [
         title: 'The Ultimate Hands-On Hadoop: Tame Your Big Data',
         issuer: 'Udemy',
         issuerLogo: udemy,
-        issueDate: 'Apr 2021',
+        issueDate: 'April 2021',
         image: hadoop,
         credentialUrl: 'https://www.udemy.com/certificate/UC-31e402de-0bd2-44ee-a4fa-dce048140d68/',
         images: [
@@ -608,7 +609,7 @@ const certifications = [
         title: 'The Data Science Course: Complete Data Science Bootcamp 2024',
         issuer: 'Udemy',
         issuerLogo: udemy,
-        issueDate: 'Mar 2021',
+        issueDate: 'March 2021',
         image: datascienceBootcamp,
         credentialUrl: 'https://www.udemy.com/certificate/UC-fc9d123a-b46f-402d-ba63-2385262a395e/',
         images: [
@@ -648,6 +649,10 @@ const projects = [
     {
         id: 'mindquest',
         title: 'MindQuest',
+        type: 'Mobile App',
+        year: '2024',
+        status: 'archived',
+        skills: ['Spring Boot', 'Spring Security', 'Flutter', 'PostgreSQL'],
         description: 'A mental health related application that facilitates community engagement, awareness regarding mental health.',
         githubUrl: 'https://github.com/samiul123/mindquest',
         demoUrl: 'https://drive.google.com/file/d/1VQ6SahYI7aexdS3wnH0OnkyAMKZCZ7ga/view?usp=sharing',
@@ -667,6 +672,10 @@ const projects = [
     {
         id: 'portfolio',
         title: 'Portfolio',
+        type: 'Web App',
+        year: '2023',
+        status: 'live',
+        skills: ['React', 'Tailwind CSS', 'Framer Motion'],
         description: 'A website to showcase my achievements and experience gathered so far.',
         githubUrl: 'https://github.com/samiul123/samiul123.github.io',
         demoUrl: 'https://samiul123.github.io',
@@ -686,6 +695,10 @@ const projects = [
     {
         id: 'bug-fixing-analysis',
         title: 'Bug Fixing Analysis',
+        type: 'Data Science',
+        year: '2023',
+        status: 'archived',
+        skills: ['Python', 'Pandas', 'Matplotlib'],
         description: 'Data analysis of open and closed bugs of Pytorch and Tensorflow.',
         githubUrl: 'https://github.com/samiul123/bug-fixing-analysis',
         images: [
@@ -700,7 +713,27 @@ const projects = [
                 fallback: true
             }
         ]
-    }
+    },
+    {
+        id: 'job-email-analyzer',
+        title: 'Job Email Analyzer',
+        type: 'ML / NLP',
+        year: '2024',
+        status: 'archived',
+        skills: ['Python', 'Scikit-learn', 'Gmail API', 'Jupyter'],
+        description: 'Classifies job application emails (interview, rejection, offer) using machine learning and the Gmail API.',
+        githubUrl: 'https://github.com/samiul123/Job-Application-Email-Analyzer',
+    },
+    {
+        id: 'resume-guard',
+        title: 'Resume Guard',
+        type: 'Word Add-in',
+        year: '2026',
+        status: 'wip',
+        skills: ['TypeScript', 'React', 'Tailwind CSS', 'Vite', 'Office.js'],
+        description: 'A Microsoft Word add-in that analyzes your resume against a job description and surfaces improvement suggestions inline.',
+        githubUrl: 'https://github.com/samiul123/resume-gaurd',
+    },
 ]
 
 export {navLinks, skillGroups, educations, experiences, publications, certifications, contacts, projects}

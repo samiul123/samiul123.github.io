@@ -25,7 +25,7 @@ export const Publication = (props) => {
           PUBLICATIONS
         </motion.h2>
         <div className="flex flex-col">
-          {publications.map((pub, i) => (
+          {[...publications].sort((a, b) => new Date(b.date) - new Date(a.date)).map((pub, i) => (
             <motion.div
               key={i}
               variants={driftUp(i * 0.1)}

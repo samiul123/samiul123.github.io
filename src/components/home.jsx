@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { samiul, samiulWebp } from '../assets';
+import { samiul, samiulWebp, download } from '../assets';
 import { driftUp, staggerContainer } from '../utils/motion';
 
 const Home = (props) => (
@@ -26,11 +26,15 @@ const Home = (props) => (
         </motion.h1>
         <motion.p
           variants={driftUp(0.3)}
-          className="text-sm tracking-[3px] text-gray-500 uppercase"
+          className="text-sm text-gray-500 leading-relaxed max-w-md"
         >
-          Data Science Enthusiast
+          4+ years building scalable microservices, distributed systems, and production backends — alongside
+          user-facing web and mobile interfaces. Graduated with an M.S. in Computer Science (August 2025)
+          from the University of Minnesota Duluth, with research in SIMD-optimized in-memory bulk R-Tree
+          construction. Interested in databases, distributed systems, machine learning, and the interfaces
+          that bring them together.
         </motion.p>
-        <motion.div variants={driftUp(0.4)} className="flex gap-4 mt-2">
+        <motion.div variants={driftUp(0.4)} className="flex flex-wrap gap-4 mt-2">
           <a
             href="#projects"
             className="bg-custom-green text-black text-xs font-bold tracking-[2px] px-6 py-3 rounded hover:opacity-90 transition-opacity"
@@ -43,6 +47,13 @@ const Home = (props) => (
           >
             CONTACT
           </a>
+          <button
+            onClick={() => window.open('/resume.html')}
+            className="flex items-center gap-2 border border-[#1a1a1a] text-gray-500 text-xs tracking-[2px] px-6 py-3 rounded hover:border-custom-green hover:text-custom-green transition-colors"
+          >
+            RESUME
+            <img src={download} alt="download" className="w-3 h-3 object-contain opacity-60" />
+          </button>
         </motion.div>
       </div>
 

@@ -1,127 +1,111 @@
-import {github, show} from "../assets"; // Ensure you import other assets as needed
-import { styles } from "../styles";
-import {projects} from "../constants";
-import {Fragment, useState} from "react";
-import {motion} from "framer-motion";
-import {fadeIn, staggerContainer} from "../utils/motion";
+import { github } from '../assets';
+import { styles } from '../styles';
+import { projects } from '../constants';
+import { motion } from 'framer-motion';
+import { driftUp, staggerContainer } from '../utils/motion';
 
-const ProjectCard = ({
-                         id,
-                         title,
-                         description,
-                         images,
-                         githubUrl,
-                         demoUrl,
-                         index,
-                         active,
-                         handleClick,
-                     }) => {
-    return (
-        <motion.div
-            variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
-            className={`relative ${
-                active === id ? 'lg:flex-[3] flex-[10] ring-1 ring-custom-green' : 'lg:flex-[1] flex-[1]'
-            } flex items-center justify-center h-[420px] cursor-pointer rounded-b-[24px] overflow-hidden`}
-            onClick={() => handleClick(id)}
-        >
-            <picture className="absolute w-full h-full object-cover rounded-b-[24px]">
-                {images.map((image, index) => (
-                    <Fragment key={index}>
-                        <source type={image.type} srcSet={image.srcSet}/>
-                        {image.fallback && <img src={image.srcSet} alt={title} className="w-full h-full object-cover"/>}
-                    </Fragment>
-                ))}
-            </picture>
+/*
+ * Previous layout: fan/accordion (cards expand on click).
+ * Preserved below in comments for reference.
+ * Hybrid idea: show 3 featured cards in fan mode, rest in a grid below.
+ *
+ * Fan layout code kept in git history (commit before masonry switch).
+ */
 
-
-            {active !== id ? (
-                <div className="relative flex items-center justify-start pr-[4.5rem]">
-                    <h3
-                        className="font-extrabold uppercase w-[150px] h-[30px]
-                        whitespace-nowrap sm:text-[20px] text-[18px] tracking-[1px]
-                        lg:bottom-[7rem] lg:rotate-[-90deg] lg:origin-[0,0]
-                        leading-none"
-                    >
-                        {title}
-                    </h3>
-                </div>
-            ) : (
-                <div
-                    className="absolute bottom-0 p-8 justify-start w-full flex-col rounded-b-[24px] bg-custom-dark/90 opacity-80 z-10">
-                    <div className="absolute inset-0 flex justify-end m-5">
-                        <div
-                            onClick={() => window.open(githubUrl, '_blank')}
-                            className="sm:w-11 sm:h-11 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-                        >
-                            <img
-                                src={github}
-                                alt="source code"
-                                className="w-4/5 h-4/5 object-contain"
-                            />
-                        </div>
-                    </div>
-
-                    <h2 className="font-bold sm:text-[32px] text-[24px] uppercase sm:mt-0 -mt-[1rem]">
-                        {title}
-                    </h2>
-                    <p
-                        className="sm:text-[14px] text-[12px]
-                        max-w-3xl sm:leading-[24px] leading-[18px]
-                        font-poppins tracking-[1px]"
-                    >
-                        {description}
-                    </p>
-                    {
-                        demoUrl &&
-                        <button
-                            className="relative flex justify-start gap-3 sm:text-[16px] text-[14px]
-                        font-bold items-center py-5 pl-3 pr-3
-                        whitespace-nowrap sm:w-[138px] sm:h-[50px]
-                        w-[125px] h-[46px] rounded-[10px]
-                        sm:mt-[22px] mt-[16px] bg-black transition duration-[0.2s] ease-in-out"
-                            onClick={() => window.open(demoUrl, '_blank')}
-                        >
-                            <img
-                                src={show}
-                                alt="Show"
-                                className="sm:w-[34px] sm:h-[34px] w-[30px] h-[30px] object-contain"
-                            />
-                            DEMO
-                        </button>
-                    }
-
-                </div>
-            )}
-        </motion.div>
-    );
+const statusConfig = {
+  live:     { label: 'Live',        className: 'text-custom-green bg-[rgba(0,214,70,0.08)] border border-[rgba(0,214,70,0.25)]' },
+  wip:      { label: 'In Progress', className: 'text-amber-400 bg-[rgba(245,158,11,0.08)] border border-[rgba(245,158,11,0.2)]' },
+  archived: { label: 'Archived',    className: 'text-gray-600 bg-[#111] border border-[#1a1a1a]' },
 };
 
+const ProjectCard = ({ title, type, year, status, skills = [], description, githubUrl, demoUrl, index }) => {
+  const badge = statusConfig[status] ?? statusConfig.archived;
 
-export const Project = (props) => {
-    const [active, setActive] = useState('mindquest');
-    return (
-        <div id={props.id}
-             className="relative p-10 h-auto bg-custom-dark text-white flex flex-col items-center justify-center space-y-10"
-        >
-            <h2 className={styles.pageTitle}>PROJECTS</h2>
-            <motion.div
-                variants={staggerContainer()}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{once: true, amount: 0.25}}
-                    className={`${styles.innerWidth} mx-auto flex flex-col`}>
-                    <div className="flex lg:flex-row flex-col max-w-6xl lg:min-h-[40vh] min-h-[70vh] gap-5 p-8">
-                        {projects.map((project, index) => (
-                            <ProjectCard
-                                key={project.id}
-                                index={index}
-                                {...project}
-                                active={active}
-                                handleClick={setActive}
-                            />
-                        ))}
-                    </div>
-                </motion.div>
+  return (
+    <motion.div
+      variants={driftUp(index * 0.08)}
+      className="border border-[#1a1a1a] rounded-lg p-5 hover:border-[#333] transition-colors flex flex-col gap-3"
+    >
+      {/* Type eyebrow + icons */}
+      <div className="flex items-center justify-between">
+        <span className="text-xs tracking-[3px] text-gray-600 uppercase">{type}</span>
+        <div className="flex gap-2">
+          {githubUrl && (
+            <button
+              onClick={() => window.open(githubUrl, '_blank')}
+              className="opacity-40 hover:opacity-100 transition-opacity"
+              aria-label="GitHub"
+            >
+              <img src={github} alt="GitHub" className="w-4 h-4 object-contain" />
+            </button>
+          )}
+          {demoUrl && (
+            <button
+              onClick={() => window.open(demoUrl, '_blank')}
+              className="text-gray-600 hover:text-custom-green transition-colors text-xs tracking-[2px]"
+              aria-label="Demo"
+            >
+              ↗
+            </button>
+          )}
         </div>
-    )
-}
+      </div>
+
+      {/* Title */}
+      <h3 className="text-white font-bold text-sm leading-snug">{title}</h3>
+
+      {/* Status + year */}
+      <div className="flex items-center gap-2">
+        <span className={`text-[10px] px-2 py-0.5 rounded-full tracking-[1px] ${badge.className}`}>
+          {badge.label}
+        </span>
+        <span className="text-gray-700 text-[10px]">{year}</span>
+      </div>
+
+      {/* Description */}
+      <p className="text-gray-500 text-xs leading-relaxed">{description}</p>
+
+      {/* Skill tags */}
+      {skills.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 mt-1">
+          {skills.map(skill => (
+            <span key={skill} className="text-[10px] text-gray-600 bg-[#111] border border-[#1a1a1a] px-2 py-0.5 rounded">
+              {skill}
+            </span>
+          ))}
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
+export const Project = (props) => (
+  <section id={props.id} className="bg-custom-dark text-white px-6 lg:px-20 py-20">
+    <motion.div
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="max-w-5xl mx-auto"
+    >
+      <motion.p variants={driftUp(0)} className="text-xs tracking-[4px] text-custom-green uppercase mb-3">
+        — Work
+      </motion.p>
+      <motion.h2
+        variants={driftUp(0.05)}
+        className={`${styles.pageTitle} mb-14`}
+      >
+        PROJECTS
+      </motion.h2>
+
+      {/* Masonry grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
+        {[...projects]
+          .sort((a, b) => parseInt(b.year) - parseInt(a.year))
+          .map((project, i) => (
+            <ProjectCard key={project.id} {...project} index={i} />
+          ))}
+      </div>
+    </motion.div>
+  </section>
+);
