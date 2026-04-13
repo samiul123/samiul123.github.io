@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.80f77bd2.css",
-    "main.js": "/static/js/main.38054518.js",
+    "main.css": "/static/css/main.557e5d3e.css",
+    "main.js": "/static/js/main.10caf036.js",
     "static/js/453.a8b49705.chunk.js": "/static/js/453.a8b49705.chunk.js",
     "static/media/project-bg.jpg": "/static/media/project-bg.06a8012db47dc4024781.jpg",
     "static/media/portfolio.jpg": "/static/media/portfolio.222cd2cccb15ec4de9da.jpg",
@@ -10,9 +10,9 @@
     "static/media/publication-bg.webp": "/static/media/publication-bg.da8d075051a65a5758bf.webp",
     "static/media/experience-bg.jpg": "/static/media/experience-bg.38cebee1a60795f882e0.jpg",
     "static/media/project-bg.webp": "/static/media/project-bg.caca4905398748d198c1.webp",
-    "static/media/samiul-v2.png": "/static/media/samiul-v2.5e1a6ea1ab0bfa62d461.png",
     "static/media/certification-bg.jpg": "/static/media/certification-bg.19b81f7ea7b7b698c807.jpg",
     "static/media/portfolio.webp": "/static/media/portfolio.788f8417bc7870d6154b.webp",
+    "static/media/samiul-v3.png": "/static/media/samiul-v3.f7c6c2c20afe7c98e617.png",
     "static/media/skills-bg.webp": "/static/media/skills-bg.c39e8e6237683b880e92.webp",
     "static/media/hadoop.png": "/static/media/hadoop.616482f378e888d70916.png",
     "static/media/datascience-bootcamp.png": "/static/media/datascience-bootcamp.111d1be8eb06f2d1bfeb.png",
@@ -22,13 +22,11 @@
     "static/media/mindquest.png": "/static/media/mindquest.10d181118ed98a68cbc4.png",
     "static/media/bug-fixing-analysis.jpeg": "/static/media/bug-fixing-analysis.9a7cff80f1b79d68005e.jpeg",
     "static/media/resume.pdf": "/static/media/resume.9ee18fb9d7519b5c195b.pdf",
-    "static/media/stiboDx.png": "/static/media/stiboDx.52d7767e331b4df502d9.png",
     "static/media/systems-expert.png": "/static/media/systems-expert.47ed5907e8ddf23ee8f1.png",
     "static/media/hadoop.webp": "/static/media/hadoop.d7c7a9c9bfae7d7cdd40.webp",
     "static/media/datascience-bootcamp.webp": "/static/media/datascience-bootcamp.b123ab1a2b4a1775e7cf.webp",
     "static/media/logo.png": "/static/media/logo.c532ead975a6690077f9.png",
     "static/media/algoxpert.png": "/static/media/algoxpert.7c7ef85bf8ea1eb0a805.png",
-    "static/media/samiul-v2.webp": "/static/media/samiul-v2.27224a1956425ec1fec1.webp",
     "static/media/education-bg.webp": "/static/media/education-bg.5d7baa6495e74a4322b2.webp",
     "static/media/bug-fixing-analysis.webp": "/static/media/bug-fixing-analysis.cca99e16ec95eee8c735.webp",
     "static/media/umd-logo.png": "/static/media/umd-logo.a777dc90a76ebc16bab7.png",
@@ -39,7 +37,6 @@
     "static/media/mindquest.webp": "/static/media/mindquest.4e8acb5608e7a0de9011.webp",
     "static/media/python.png": "/static/media/python.632369df831d16241b59.png",
     "static/media/systems-expert.webp": "/static/media/systems-expert.e9cda89e1a194d0a9fc3.webp",
-    "static/media/stiboDx.webp": "/static/media/stiboDx.5eca7cdfd5377ab72da5.webp",
     "static/media/konasl.png": "/static/media/konasl.46bef905bc94cd1367c2.png",
     "static/media/algoxpert.webp": "/static/media/algoxpert.e4e276be3b4ce0a38671.webp",
     "static/media/buet-logo.webp": "/static/media/buet-logo.c887667db22f1cece9e8.webp",
@@ -89,12 +86,12 @@
     "static/media/close.svg": "/static/media/close.8205e1fa6d840cf67cac293ee29d33e5.svg",
     "static/media/nav-arrow-left.svg": "/static/media/nav-arrow-left.9ea2a2449a34f2f511d41aea75351cdd.svg",
     "static/media/nav-arrow-right.svg": "/static/media/nav-arrow-right.1aac9c773bf0b489297d62d718a3a694.svg",
-    "main.80f77bd2.css.map": "/static/css/main.80f77bd2.css.map",
-    "main.38054518.js.map": "/static/js/main.38054518.js.map",
+    "main.557e5d3e.css.map": "/static/css/main.557e5d3e.css.map",
+    "main.10caf036.js.map": "/static/js/main.10caf036.js.map",
     "453.a8b49705.chunk.js.map": "/static/js/453.a8b49705.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.80f77bd2.css",
-    "static/js/main.38054518.js"
+    "static/css/main.557e5d3e.css",
+    "static/js/main.10caf036.js"
   ]
 }
