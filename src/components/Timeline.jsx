@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { motion } from 'framer-motion';
 import { driftUp, staggerContainer } from '../utils/motion';
 
@@ -16,17 +15,13 @@ const TimelineItem = ({ title, subtitle, meta, date, images, index }) => (
       {images && (
         <picture className="w-8 h-8 flex-shrink-0 mt-0.5">
           {images.map((img, i) => (
-            <Fragment key={i}>
-              <source type={img.type} srcSet={img.srcSet} />
-              {img.fallback && (
-                <img
-                  src={img.srcSet}
-                  alt={subtitle}
-                  className="w-8 h-8 object-contain opacity-70"
-                />
-              )}
-            </Fragment>
+            <source key={i} type={img.type} srcSet={img.srcSet} />
           ))}
+          <img
+            src={(images.find(img => img.fallback) || images[images.length - 1]).srcSet}
+            alt={subtitle}
+            className="w-8 h-8 object-contain opacity-70"
+          />
         </picture>
       )}
       <div>
@@ -39,7 +34,7 @@ const TimelineItem = ({ title, subtitle, meta, date, images, index }) => (
   </motion.div>
 );
 
-const Timeline = ({ items, label, title, id }) => (
+const Timeline = ({ items = [], label, title, id }) => (
   <section id={id} className="bg-custom-dark text-white px-6 lg:px-20 py-20">
     <motion.div
       variants={staggerContainer()}

@@ -53,9 +53,8 @@ function Header() {
       </div>
 
       {/* Desktop nav */}
-      {window.innerWidth >= 1024 && (
-        <nav>
-          <ul className="flex flex-row items-center gap-1">
+      <nav className="hidden lg:block">
+        <ul className="flex flex-row items-center gap-1">
             {navLinks.map(nav => (
               <li
                 key={nav.id}
@@ -82,37 +81,34 @@ function Header() {
               </li>
             ))}
           </ul>
-        </nav>
-      )}
+      </nav>
 
       {/* Mobile nav */}
-      {window.innerWidth < 1024 && (
-        <motion.nav
-          initial={{ x: '100%' }}
-          animate={{ x: menuOpen ? '0%' : '100%' }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className={`${menuOpen ? 'flex' : 'hidden'} flex-col fixed top-0 left-0 w-full bg-custom-dark border-r border-[#1a1a1a] p-8 z-40 min-h-screen`}
-        >
-          <ul className="flex flex-col gap-6 mt-20">
-            {navLinks.map(nav => (
-              <li
-                key={nav.id}
-                className={`cursor-pointer text-sm tracking-[2px] transition-colors duration-300 ${
-                  activeMenu === nav.id ? 'text-custom-green' : 'text-gray-500'
-                } hover:text-white`}
-                onClick={() => {
-                  setActiveMenu(nav.id);
-                  setMenuOpen(false);
-                }}
-              >
-                <a href={`#${nav.id}`} className="block">
-                  {nav.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </motion.nav>
-      )}
+      <motion.nav
+        initial={{ x: '100%' }}
+        animate={{ x: menuOpen ? '0%' : '100%' }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className="lg:hidden flex flex-col fixed top-0 left-0 w-full bg-custom-dark border-r border-[#1a1a1a] p-8 z-40 min-h-screen"
+      >
+        <ul className="flex flex-col gap-6 mt-20">
+          {navLinks.map(nav => (
+            <li
+              key={nav.id}
+              className={`cursor-pointer text-sm tracking-[2px] transition-colors duration-300 ${
+                activeMenu === nav.id ? 'text-custom-green' : 'text-gray-500'
+              } hover:text-white`}
+              onClick={() => {
+                setActiveMenu(nav.id);
+                setMenuOpen(false);
+              }}
+            >
+              <a href={`#${nav.id}`} className="block">
+                {nav.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </motion.nav>
     </header>
   );
 }
