@@ -1,93 +1,46 @@
-import {certificationBg, certificationWebp} from "../assets";
-import React, {Fragment, useEffect, useState} from "react";
-import {certifications} from "../constants";
-import { motion } from "framer-motion";
-import { fadeIn } from "../utils/motion";
-import { styles } from "../styles";
-import { Slide } from "react-slideshow-image";
-import 'react-slideshow-image/dist/styles.css';
-import { chunkArray } from "../utils/helpers";
-import Background from "./Background";
+import { motion } from 'framer-motion';
+import { certifications } from '../constants';
+import { driftUp, staggerContainer } from '../utils/motion';
 
-export const Certification = (props) => {
-    const [chunkedGroups, setChunkedGroups] = useState([]);
-    const [chunkSize, setChunkSize] = useState(0);
-
-    const handleResize = () => {
-        let chunkSize = 1;
-        if (window.innerWidth >= 1024) chunkSize = 3;
-        // else if (window.innerWidth >= 640 && window.innerWidth < 1024) chunkSize = 2;
-        setChunkSize(chunkSize);
-        setChunkedGroups(chunkArray(certifications, chunkSize));
-    };
-
-    useEffect(() => {
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // TODO: Use images from constant navlinks
-    const images=[{
-        type: "image/webp",
-        srcSet: certificationWebp,
-        fallback: false
-    }, {
-        type: "image/jpeg",
-        srcSet: certificationBg,
-        fallback: true
-    }]
-
-    return (
-        <div
-            id={props.id}
-            key={props.id}
-            className="uppercase relative p-10 h-auto bg-cover text-white flex flex-col items-center space-y-10"
-        >
-            <Background images={images}/>
-            <h2 className={styles.pageTitle}>Certifications</h2>
-            <motion.div
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: false, amount: 0.25 }}
-                    className="relative z-10 w-full lg:w-screen">
-                <Slide arrows={false}
-                       indicators={chunkSize < certifications.length}
-                       autoplay={chunkSize < certifications.length}
-                       canSwipe={chunkSize < certifications.length}
-                >
-                    {
-                        chunkedGroups.map((group, groupIndex) => (
-                            <div key={groupIndex} className="flex flex-wrap w-full">
-                                {
-                                    group.map((item, itemIndex) => (
-                                        <motion.div
-                                            key={itemIndex}
-                                            className="flex-1 rounded-lg items-center z-10 p-3"
-                                            whileHover={{scale: 1.1}}
-                                            variants={fadeIn('right', 'spring', itemIndex * 0.5, 0.75)}
-                                        >
-                                            <picture className="hover:cursor-pointer"
-                                                     onClick={() => window.open(item.credentialUrl)}>
-                                                {
-                                                    item.images.map((image, index) => (
-                                                        <Fragment key={`${groupIndex}_${itemIndex}_${index}`}>
-                                                            <source type={image.type} srcSet={image.srcSet}/>
-                                                            {image.fallback &&
-                                                                <img src={image.srcSet} alt={item.title}
-                                                                     className="w-full h-auto rounded-lg"/>}
-                                                        </Fragment>
-                                                    ))
-                                                }
-                                            </picture>
-                                        </motion.div>
-                                    ))
-                                }
-                            </div>
-                        ))
-                    }
-                </Slide>
-            </motion.div>
-        </div>
-    )
-}
+export const Certification = (props) => (
+  <section id={props.id} className="bg-custom-dark text-white px-6 lg:px-20 py-20">
+    <motion.div
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="max-w-5xl mx-auto"
+    >
+      <motion.p variants={driftUp(0)} className="text-xs tracking-[4px] text-custom-green uppercase mb-3">
+        — Credentials
+      </motion.p>
+      <motion.h2
+        variants={driftUp(0.05)}
+        className="font-lulo text-3xl lg:text-4xl font-black mb-14 text-white uppercase"
+      >
+        CERTIFICATIONS
+      </motion.h2>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {certifications.map((cert, i) => (
+          <motion.div
+            key={i}
+            variants={driftUp(i * 0.1)}
+            whileHover={{ y: -3 }}
+            className="border border-[#1a1a1a] rounded-lg p-5 hover:border-[#333] transition-colors"
+          >
+            <h3 className="text-white text-sm font-bold leading-snug mb-2">{cert.title}</h3>
+            <p className="text-gray-600 text-xs mb-4">{cert.issueDate ?? cert.date}</p>
+            <a
+              href={cert.credentialUrl ?? cert.url ?? cert.link}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs tracking-[2px] text-custom-green hover:underline"
+            >
+              VIEW CREDENTIAL →
+            </a>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  </section>
+);
