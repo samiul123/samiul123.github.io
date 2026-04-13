@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import {motion, useInView} from "framer-motion";
-import {slideIn, vibrate} from "../utils/motion";
+import {driftUp, vibrate} from "../utils/motion";
 import {close, send, sendwebp} from "../assets";
 import emailjs from '@emailjs/browser';
 import {sanitizeEmail, sanitizeMessage, sanitizeName, validateForm} from "../utils/contact";
@@ -107,7 +107,7 @@ export const Contact = (props) => {
         }
     }, [error])
 
-    const variants = error?.message !== '' ? vibrate : slideIn('up', 'tween', 0.2, 1);
+    const variants = error?.message !== '' ? vibrate : driftUp(0.2);
 
     useEffect(() => {
         if (error?.message !== '' || success !== '') {
@@ -122,16 +122,16 @@ export const Contact = (props) => {
         <div
             id={props.id}
             key={props.id}
-            className="p-10 h-auto bg-custom-gray text-white flex flex-col items-center space-y-10">
+            className="bg-custom-dark text-white px-6 lg:px-20 py-20 flex flex-col items-center gap-10">
             <h2 className={styles.pageTitle}>Contact</h2>
             <div ref={ref} className="overflow-hidden flex sm:flex-col justify-center">
                 <motion.div
                     initial="hidden"
                     animate={isInView ? "show" : "hidden"}
                     viewport={{ once: false, amount: .25 }}
-                    variants={slideIn('left', 'tween', 0.2, 1)}
+                    variants={driftUp(0.2)}
                     className="flex flex-col sm:flex-row gap-5 items-center justify-center">
-                    <div className="bg-gray-600 flex-[.75] p-4 sm:p-8 rounded-lg lg:min-w-[700px] md:min-w-[600px] min-w-[300px]">
+                    <div className="bg-[#0e0e0e] border border-[#1a1a1a] flex-[.75] p-4 sm:p-8 rounded-lg lg:min-w-[700px] md:min-w-[600px] min-w-[300px]">
                         <div className="overflow-hidden">
                             {
                                 (error?.message || success) &&
@@ -163,8 +163,7 @@ export const Contact = (props) => {
                                        value={form.name}
                                        placeholder="What's your name?"
                                        onChange={handleChange}
-                                       className="text-input px-3 py-4 rounded-lg
-                               border-none font-medium bg-custom-gray outline-none"
+                                       className="px-3 py-4 rounded-lg font-medium bg-[#111] border border-[#1a1a1a] outline-none focus:border-custom-green text-white w-full transition-colors"
                                 />
                             </label>
                             <label className="flex flex-col gap-2">
@@ -175,7 +174,7 @@ export const Contact = (props) => {
                                        value={form.email}
                                        placeholder="What's your email?"
                                        onChange={handleChange}
-                                       className="text-input px-3 py-4 rounded-lg border-none font-medium bg-custom-gray outline-none"
+                                       className="px-3 py-4 rounded-lg font-medium bg-[#111] border border-[#1a1a1a] outline-none focus:border-custom-green text-white w-full transition-colors"
                                 />
                             </label>
                             <label className="flex flex-col gap-2">
@@ -186,8 +185,7 @@ export const Contact = (props) => {
                                     value={form.message}
                                     onChange={handleChange}
                                     placeholder="What's your message?"
-                                    className="text-input px-3 py-4 rounded-lg border-none font-medium bg-custom-gray outline-none
-                                resize-none"
+                                    className="px-3 py-4 rounded-lg font-medium bg-[#111] border border-[#1a1a1a] outline-none focus:border-custom-green text-white w-full transition-colors resize-none"
                                 />
                             </label>
                             <ReCAPTCHA sitekey='6LfIKPEpAAAAAArbixvvZm1F1ZBdku-cAd7xitxi'
@@ -196,8 +194,7 @@ export const Contact = (props) => {
                             />
                             <button
                                 type="submit"
-                                className="p-3 flex w-fit gap-2 items-center justify-center bg-custom-gray font-bold
-                            rounded-lg hover:bg-black">
+                                className="p-3 flex w-fit gap-2 items-center justify-center bg-custom-green text-black font-bold rounded-lg hover:opacity-90 transition-opacity">
                                 {loading ? 'SENDING' : 'SEND'}
                                 <picture>
                                     <source type="image/webp" srcSet={sendwebp}/>
