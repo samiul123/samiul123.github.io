@@ -120,7 +120,8 @@ const skillGroups = [
                         srcSet: java,
                         fallback: true
                     }
-                ]
+                ],
+                showInResume: true
             },
             {
                 id: 'python',
@@ -136,7 +137,8 @@ const skillGroups = [
                         srcSet: python,
                         fallback: true
                     }
-                ]
+                ],
+                showInResume: true
             },
             {
                 id: 'javascript',
@@ -240,7 +242,8 @@ const skillGroups = [
                         srcSet: spring,
                         fallback: true
                     }
-                ]
+                ],
+                showInResume: true
             },
             {
                 id: 'nodejs',
@@ -367,6 +370,17 @@ const skillGroups = [
                         fallback: true
                     }
                 ]
+            },
+            {
+                id: 'mysql',
+                name: 'MYSQL',
+                images: [
+                    {
+                        type: "image/svg+xml",
+                        srcSet: 'https://www.mysql.com/common/logos/logo-mysql-170x115.png',
+                        fallback: true
+                    }
+                ]
             }
         ]
     },
@@ -460,6 +474,17 @@ const skillGroups = [
                         fallback: true
                     }
                 ]
+            },
+            {
+                id: 'docker',
+                name: 'DOCKER',
+                images: [
+                    {
+                        type: "image/svg+xml",
+                        srcSet: 'https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png',
+                        fallback: true
+                    }
+                ]
             }
         ]
     }
@@ -523,6 +548,9 @@ const experiences = [
                 srcSet: umd,
                 fallback: true
             }
+        ],
+        bulletPoints: [
+            'Optimized large-scale in-memory bulk R-Tree construction using AVX-512 SIMD, achieving 3x speedup on 70M records by improving memory access and parallel computation efficiency.'
         ]
     },
     {
@@ -535,6 +563,11 @@ const experiences = [
                 srcSet: 'https://www.stibodx.com/wp-content/uploads/2025/09/stibo-dx-wordmark_white.svg',
                 fallback: true
             }
+        ],
+        bulletPoints: [
+            'Optimized GraphQL content retrieval, reducing latency by 20% through concurrent data fetching and Node.js clustering.',
+            'Designed a unified CLI and containerized development workflow for 5+ presentation-layer microservices, enabling consistent cross-platform builds and simplifying developer onboarding.',
+            'Expanded automated test coverage from <5% to 50% by establishing developer-driven unit tests with Jasmine.'
         ]
     },
     {
@@ -553,10 +586,19 @@ const experiences = [
                 srcSet: konasl,
                 fallback: true
             }
+        ],
+        bulletPoints: [
+            'Shipped a high-throughput transaction processing API gateway (12K+ RPM) over Transport-Layer Protocol (TCP) for point-of-sale (POS) systems, supporting $2.5B+ annual financial flows using Java, Spring Boot, and Apache Camel.',
+            'Reduced P95 latency to sub-100ms across 1M+ daily financial transactions by optimizing distributed system bottlenecks using Redis caching, async processing, and SQL tuning.',
+            'Designed a Kafka-based event-driven pipeline processing telemetry from 1K+ POS devices, improving real-time system observability and enabling faster detection of production issues.',
+            'Engineered WebSocket infrastructure supporting 100K+ concurrent connections, enabling low-latency administrative operations using Nginx and Redis Pub/Sub.',
+            'Owned production support for 5+ microservices, resolving critical incidents through log analysis and root cause investigation in Kibana, improving system reliability and uptime.',
+            'Automated continuous integration/continuous delivery (CI/CD) failure alerts via Jenkins–Slack integration, cutting build feedback time from hours to minutes across 70+ weekly builds.',
+            'Built consumer-facing web applications (React), improving rendering performance and state management for 5M+ users.'
         ]
     },
     {
-        title: 'Software Engineer (Part-Time, Remote)',
+        title: 'Software Engineer, Part-Time, Voluntary',
         company: 'Parkspace',
         date: 'August 2019 - February 2020',
         images: [
@@ -565,6 +607,11 @@ const experiences = [
                 srcSet: defaultCompany,
                 fallback: true
             }
+        ],
+        bulletPoints: [
+            'Developed RESTful APIs for a parking management system using Java and Spring Boot, enabling real-time parking availability updates and reservation handling.',
+            'Implemented a secure user authentication system with JWT, enhancing data protection and access control for the application.',
+            'Collaborated with a remote team to integrate third-party payment gateways, facilitating seamless transactions for users.'
         ]
     }
 ]
