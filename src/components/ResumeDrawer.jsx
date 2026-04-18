@@ -121,18 +121,18 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
                   onClick={zoomOut}
                   disabled={zoom <= MIN_ZOOM}
                   aria-label="Zoom out"
-                  className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] hover:text-white hover:border-[#333] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#aaa] hover:text-white hover:border-[#333] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <FiMinus size={10} />
                 </button>
-                <span className="text-[9px] text-[#555] w-[34px] text-center select-none tabular-nums">
+                <span className="text-[9px] text-[#aaa] w-[34px] text-center select-none tabular-nums">
                   {Math.round(zoom * 100)}%
                 </span>
                 <button
                   onClick={zoomIn}
                   disabled={zoom >= MAX_ZOOM}
                   aria-label="Zoom in"
-                  className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] hover:text-white hover:border-[#333] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#aaa] hover:text-white hover:border-[#333] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <FiPlus size={10} />
                 </button>
@@ -143,7 +143,7 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
                 href="/Samiul_Mushfik_Resume.pdf"
                 download
                 aria-label="Download resume PDF"
-                className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] hover:text-custom-green hover:border-custom-green transition-colors"
+                className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#aaa] hover:text-custom-green hover:border-custom-green transition-colors"
               >
                 <FiDownload size={11} />
               </a>
@@ -152,7 +152,7 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
               <button
                 onClick={onClose}
                 aria-label="Close resume"
-                className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] text-[13px] hover:text-white hover:border-[#333] transition-colors"
+                className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#aaa] text-[13px] hover:text-white hover:border-[#333] transition-colors"
               >
                 ✕
               </button>
