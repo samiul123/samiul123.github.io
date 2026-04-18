@@ -18,11 +18,11 @@ describe('ResumeDrawer', () => {
     expect(screen.getByRole('dialog', { name: /resume/i })).toBeInTheDocument();
   });
 
-  it('renders key resume sections', () => {
+  it('renders the PDF iframe', () => {
     render(<ResumeDrawer isOpen={true} onClose={onClose} />);
-    expect(screen.getByText(/Technical Skills/i)).toBeInTheDocument();
-    expect(screen.getByText(/Professional Experience/i)).toBeInTheDocument();
-    expect(screen.getByText(/Education/i)).toBeInTheDocument();
+    const iframe = document.querySelector('iframe[title="Resume PDF"]');
+    expect(iframe).toBeInTheDocument();
+    expect(iframe.src).toContain('Samiul_Mushfik_Resume.pdf');
   });
 
   it('calls onClose when overlay is clicked', () => {
