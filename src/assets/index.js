@@ -54,6 +54,7 @@ import buetwebp from './education/buet-logo.webp';
 import umd from './education/umd-logo.png';
 import umdwebp from './education/umd-logo.webp';
 
+import defaultCompany from './experience/default-company.svg';
 import konasl from './experience/konasl.png';
 import konaslWebp from './experience/konasl.webp';
 import resume from './experience/resume.png';
@@ -132,6 +133,7 @@ export {
     umd,
     educationBg,
     educationWebp,
+    defaultCompany,
     konasl,
     experienceBg,
     experienceWebp,

@@ -33,6 +33,7 @@ import {
     jira,
     buet,
     umd,
+    defaultCompany,
     konasl,
     algoxpert,
     udemy,
@@ -507,6 +508,24 @@ const educations = [
 
 const experiences = [
     {
+        title: 'Graduate Student Researcher',
+        company: 'University of Minnesota - Duluth',
+        date: 'August 2023 - August 2025',
+        logo: umd,
+        images: [
+            {
+                type: "image/webp",
+                srcSet: umdwebp,
+                fallback: false
+            },
+            {
+                type: "image/png",
+                srcSet: umd,
+                fallback: true
+            }
+        ]
+    },
+    {
         title: 'Software Engineer',
         company: 'Stibo DX',
         date: 'August 2022 - August 2023',
@@ -532,6 +551,18 @@ const experiences = [
             {
                 type: "image/png",
                 srcSet: konasl,
+                fallback: true
+            }
+        ]
+    },
+    {
+        title: 'Software Engineer (Part-Time, Remote)',
+        company: 'Parkspace',
+        date: 'August 2019 - February 2020',
+        images: [
+            {
+                type: "image/svg+xml",
+                srcSet: defaultCompany,
                 fallback: true
             }
         ]
