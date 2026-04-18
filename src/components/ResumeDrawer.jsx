@@ -26,7 +26,9 @@ const SectionTitle = ({ children }) => (
 const Divider = () => <div className="border-t border-[#1a1a1a] my-4" />;
 
 const ResumeDrawer = ({ isOpen, onClose }) => {
-  const [width, setWidth] = useState(() => Math.round(window.innerWidth * 0.38));
+  const [width, setWidth] = useState(() =>
+    window.innerWidth < 1024 ? '100vw' : Math.round(window.innerWidth * 0.38)
+  );
   const [zoom, setZoom] = useState(1.0);
   const isDragging = useRef(false);
 
