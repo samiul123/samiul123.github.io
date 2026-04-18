@@ -113,7 +113,7 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
 
             {/* Header */}
             <div className="flex items-center gap-3 px-4 border-b border-[#1a1a1a] flex-shrink-0" style={{ height: 48 }}>
-              <span className="text-[9px] tracking-[3px] uppercase text-[#aaa] font-semibold">RESUME</span>
+              <span className="text-xs tracking-[3px] uppercase text-[#aaa] font-semibold">RESUME</span>
 
               {/* Zoom controls */}
               <div className="ml-auto flex items-center gap-1">
@@ -125,7 +125,7 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
                 >
                   <FiMinus size={10} />
                 </button>
-                <span className="text-[9px] text-[#aaa] w-[34px] text-center select-none tabular-nums">
+                <span className="text-xs text-[#aaa] w-[34px] text-center select-none tabular-nums">
                   {Math.round(zoom * 100)}%
                 </span>
                 <button
