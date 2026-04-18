@@ -1,5 +1,6 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { FiMinus, FiPlus, FiDownload } from 'react-icons/fi';
 import {
   resumeHeader,
   resumeSkills,
@@ -10,6 +11,12 @@ import {
   resumeCertifications,
 } from '../constants/resume';
 
+const MIN_WIDTH = 320;
+const MAX_WIDTH_RATIO = 0.85;
+const MIN_ZOOM = 0.5;
+const MAX_ZOOM = 2.0;
+const ZOOM_STEP = 0.1;
+
 const SectionTitle = ({ children }) => (
   <h3 className="text-[10px] tracking-[3px] uppercase font-bold text-custom-green border-b border-[#00d64622] pb-1 mb-3">
     {children}
@@ -19,6 +26,13 @@ const SectionTitle = ({ children }) => (
 const Divider = () => <div className="border-t border-[#1a1a1a] my-4" />;
 
 const ResumeDrawer = ({ isOpen, onClose }) => {
+  const [width, setWidth] = useState(() => Math.round(window.innerWidth * 0.38));
+  const [zoom, setZoom] = useState(1.0);
+  const isDragging = useRef(false);
+
+  const zoomIn = useCallback(() => setZoom(z => Math.min(+(z + ZOOM_STEP).toFixed(1), MAX_ZOOM)), []);
+  const zoomOut = useCallback(() => setZoom(z => Math.max(+(z - ZOOM_STEP).toFixed(1), MIN_ZOOM)), []);
+
   const handleEscape = useCallback(
     (e) => { if (e.key === 'Escape') onClose(); },
     [onClose]
@@ -33,6 +47,33 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
       document.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen, handleEscape]);
+
+  useEffect(() => {
+    const onMouseMove = (e) => {
+      if (!isDragging.current) return;
+      const newWidth = window.innerWidth - e.clientX;
+      setWidth(Math.min(Math.max(newWidth, MIN_WIDTH), Math.round(window.innerWidth * MAX_WIDTH_RATIO)));
+    };
+    const onMouseUp = () => {
+      if (!isDragging.current) return;
+      isDragging.current = false;
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+    return () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+  }, []);
+
+  const onResizeStart = useCallback((e) => {
+    e.preventDefault();
+    isDragging.current = true;
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+  }, []);
 
   return (
     <AnimatePresence>
@@ -56,28 +97,69 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="fixed top-0 right-0 bottom-0 z-50 flex flex-col bg-custom-dark border-l border-[#1a1a1a]"
-            style={{ width: '38%' }}
+            style={{ width }}
           >
-            {/* Green left-edge accent */}
+            {/* Resize handle */}
             <div
-              className="absolute top-0 left-[-1px] bottom-0 w-[2px] pointer-events-none"
-              style={{ background: 'linear-gradient(to bottom, #00d646, transparent)', opacity: 0.5 }}
-            />
+              onMouseDown={onResizeStart}
+              className="absolute top-0 left-0 bottom-0 w-[6px] z-10 cursor-col-resize group"
+            >
+              {/* Green accent line — brightens on hover/drag */}
+              <div
+                className="absolute top-0 left-0 bottom-0 w-[2px] opacity-50 group-hover:opacity-100 transition-opacity"
+                style={{ background: 'linear-gradient(to bottom, #00d646, transparent)' }}
+              />
+            </div>
 
             {/* Header */}
-            <div className="flex items-center px-4 border-b border-[#1a1a1a] flex-shrink-0" style={{ height: 48 }}>
+            <div className="flex items-center gap-3 px-4 border-b border-[#1a1a1a] flex-shrink-0" style={{ height: 48 }}>
               <span className="text-[9px] tracking-[3px] uppercase text-[#aaa] font-semibold">RESUME</span>
+
+              {/* Zoom controls */}
+              <div className="ml-auto flex items-center gap-1">
+                <button
+                  onClick={zoomOut}
+                  disabled={zoom <= MIN_ZOOM}
+                  aria-label="Zoom out"
+                  className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] hover:text-white hover:border-[#333] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <FiMinus size={10} />
+                </button>
+                <span className="text-[9px] text-[#555] w-[34px] text-center select-none tabular-nums">
+                  {Math.round(zoom * 100)}%
+                </span>
+                <button
+                  onClick={zoomIn}
+                  disabled={zoom >= MAX_ZOOM}
+                  aria-label="Zoom in"
+                  className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] hover:text-white hover:border-[#333] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <FiPlus size={10} />
+                </button>
+              </div>
+
+              {/* Download PDF */}
+              <a
+                href="/Samiul_Mushfik_Resume.pdf"
+                download
+                aria-label="Download resume PDF"
+                className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] hover:text-custom-green hover:border-custom-green transition-colors"
+              >
+                <FiDownload size={11} />
+              </a>
+
+              {/* Close */}
               <button
                 onClick={onClose}
                 aria-label="Close resume"
-                className="ml-auto flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] text-[13px] hover:text-white hover:border-[#333] transition-colors"
+                className="flex items-center justify-center w-[22px] h-[22px] border border-[#1a1a1a] rounded-[3px] text-[#555] text-[13px] hover:text-white hover:border-[#333] transition-colors"
               >
                 ✕
               </button>
             </div>
 
             {/* Scrollable content */}
-            <div className="flex-1 overflow-y-auto px-5 py-5 text-[#888]">
+            <div className="flex-1 overflow-y-auto px-5 py-5 text-[#888]" style={{ zoom }}>
 
               {/* ── Name & Contact ── */}
               <div className="mb-4">
