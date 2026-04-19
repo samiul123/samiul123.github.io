@@ -59,8 +59,8 @@ export const Contact = (props) => {
         }
 
         emailjs.send(
-            process.env.REACT_APP_EMAIL_JS_SERVICE_ID,
-            process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID,
+            import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
+            import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID,
             {
                 from_name: sanitizedForm.name,
                 from_email: sanitizedForm.email,
@@ -68,7 +68,7 @@ export const Contact = (props) => {
                 "g-recaptcha-response": token
             },
             {
-                publicKey: process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY
+                publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY
             }
         ).then(
             () => {
