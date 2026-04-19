@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import ResumeDrawer from '../ResumeDrawer';
 
 describe('ResumeDrawer', () => {
-  const onClose = jest.fn();
+  const onClose = vi.fn();
 
   beforeEach(() => {
     onClose.mockClear();
