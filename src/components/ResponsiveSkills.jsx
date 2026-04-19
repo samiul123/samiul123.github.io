@@ -1,7 +1,3 @@
-import {Slide} from "react-slideshow-image";
-import {skillGroups} from "../constants";
-import {motion} from "framer-motion";
-
 // const SkillSlideShow = (props) => {
 //     return (
 //         <div className="relative z-20 w-screen lg:hidden">

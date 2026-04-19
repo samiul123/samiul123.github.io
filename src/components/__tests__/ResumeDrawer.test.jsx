@@ -20,16 +20,14 @@ describe('ResumeDrawer', () => {
 
   it('renders the PDF iframe', () => {
     render(<ResumeDrawer isOpen={true} onClose={onClose} />);
-    const iframe = document.querySelector('iframe[title="Resume PDF"]');
+    const iframe = screen.getByTitle('Resume PDF');
     expect(iframe).toBeInTheDocument();
     expect(iframe.src).toContain('Samiul_Mushfik_Resume.pdf');
   });
 
   it('calls onClose when overlay is clicked', () => {
     render(<ResumeDrawer isOpen={true} onClose={onClose} />);
-    // The overlay is the sibling div before the motion.div
-    const dialog = screen.getByRole('dialog', { name: /resume/i });
-    fireEvent.click(dialog.previousSibling);
+    fireEvent.click(screen.getByTestId('resume-overlay'));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 

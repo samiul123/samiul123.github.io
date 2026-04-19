@@ -1,26 +1,9 @@
 import { useEffect, useCallback, useState, useRef } from 'react'; // useState kept for future zoom restoration
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiDownload } from 'react-icons/fi';
-import {
-  resumeHeader,
-  resumeSkills,
-  resumeExperience,
-  resumeResearch,
-  resumeProjects,
-  resumeEducation,
-  resumeCertifications,
-} from '../constants/resume';
 
 const MIN_WIDTH = 320;
 const MAX_WIDTH_RATIO = 0.85;
-
-const SectionTitle = ({ children }) => (
-  <h3 className="text-[10px] tracking-[3px] uppercase font-bold text-custom-green border-b border-[#00d64622] pb-1 mb-3">
-    {children}
-  </h3>
-);
-
-const Divider = () => <div className="border-t border-[#1a1a1a] my-4" />;
 
 const ResumeDrawer = ({ isOpen, onClose }) => {
   const [width, setWidth] = useState(() =>
@@ -83,6 +66,7 @@ const ResumeDrawer = ({ isOpen, onClose }) => {
             style={{ background: 'rgba(0,0,0,0.72)' }}
             onClick={onClose}
             aria-hidden="true"
+            data-testid="resume-overlay"
           />
 
           {/* Drawer */}

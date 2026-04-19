@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Section Design Options</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom colors matching the portfolio */
+        :root {
+            --custom-dark: #0a0a0a;
+            --custom-green: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen p-4">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-custom-green mb-6">News Section Design Options</h1>
+
+        <div class="space-y-8">
+            <!-- Option 1: Card Grid Layout -->
+            <section>
+                <h2 class="text-2xl font-semibold text-white mb-4">Option 1: Card Grid Layout</h2>
+                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <div class="p-4">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                    Tech
+                                </div>
+                                <span class="ml-3 text-sm text-gray-400">Technology</span>
+                            </div>
+                            <h3 class="font-semibold text-white mb-2">Building Scalable Microservices with Spring Boot</h3>
+                            <p class="text-gray-400 text-sm mb-3">
+                                Learn how to design and implement microservices architecture using Spring Boot...
+                            </p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span>Apr 10, 2026</span>
+                                <span class="mx-2">•</span>
+                                <span>3 min read</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <div class="p-4">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                    ML
+                                </div>
+                                <span class="ml-3 text-sm text-gray-400">Machine Learning</span>
+                            </div>
+                            <h3 class="font-semibold text-white mb-2">SIMD-Optimized Bulk R-Tree Construction</h3>
+                            <p class="text-gray-400 text-sm mb-3">
+                                Research paper on improving spatial database performance through SIMD optimizations...
+                            </p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span>Mar 15, 2026</span>
+                                <span class="mx-2">•</span>
+                                <span>5 min read</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <div class="p-4">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                    Dev
+                                </div>
+                                <span class="ml-3 text-sm text-gray-400">Development</span>
+                            </div>
+                            <h3 class="font-semibold text-white mb-2">Portfolio v2: Refactoring Skills Section</h3>
+                            <p class="text-gray-400 text-sm mb-3">
+                                Improving the skills tab implementation with better accessibility and performance...
+                            </p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span>Apr 5, 2026</span>
+                                <span class="mx-2">•</span>
+                                <span>4 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Option 2: List Layout -->
+            <section>
+                <h2 class="text-2xl font-semibold text-white mb-4">Option 2: List Layout</h2>
+                <div class="space-y-6">
+                    <div class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0">
+                                    Tech
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Building Scalable Microservices with Spring Boot</h3>
+                                    <p class="text-gray-400 text-sm mb-3 line-clamp-2">
+                                        Learn how to design and implement microservices architecture using Spring Boot and Kubernetes...
+                                    </p>
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <span>Apr 10, 2026</span>
+                                        <span class="mx-2">•</span>
+                                        <span>Technology</span>
+                                        <span class="mx-2">•</span>
+                                        <span>3 min read</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0">
+                                    Research
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">SIMD-Optimized Bulk R-Tree Construction</h3>
+                                    <p class="text-gray-400 text-sm mb-3 line-clamp-2">
+                                        Research paper on improving spatial database performance through SIMD optimizations for bulk loading...
+                                    </p>
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <span>Mar 15, 2026</span>
+                                        <span class="mx-2">•</span>
+                                        <span>Research</span>
+                                        <span class="mx-2">•</span>
+                                        <span>5 min read</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0">
+                                    Dev
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Portfolio v2: Refactoring Skills Section</h3>
+                                    <p class="text-gray-400 text-sm mb-3 line-clamp-2">
+                                        Improving the skills tab implementation with better accessibility and performance using React 18 features...
+                                    </p>
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <span>Apr 5, 2026</span>
+                                        <span class="mx-2">•</span>
+                                        <span>Development</span>
+                                        <span class="mx-2">•</span>
+                                        <span>4 min read</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Option 3: Timeline Layout -->
+            <section>
+                <h2 class="text-2xl font-semibold text-white mb-4">Option 3: Timeline Layout</h2>
+                <div class="space-y-8">
+                    <div class="relative">
+                        <div class="absolute left-0 top-2.5 w-2 h-2 bg-custom-green rounded-full"></div>
+                        <div class="ml-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                    Tech
+                                </div>
+                                <span class="ml-3 text-sm text-gray-400">Technology</span>
+                            </div>
+                            <h3 class="font-semibold text-white mb-2">Building Scalable Microservices with Spring Boot</h3>
+                            <p class="text-gray-400 text-sm mb-3">
+                                Learn how to design and implement microservices architecture using Spring Boot and Kubernetes for cloud-native applications...
+                            </p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span>Apr 10, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute left-0 top-2.5 w-2 h-2 bg-custom-green rounded-full"></div>
+                        <div class="ml-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                    Research
+                                </div>
+                                <span class="ml-3 text-sm text-gray-400">Research</span>
+                            </div>
+                            <h3 class="font-semibold text-white mb-2">SIMD-Optimized Bulk R-Tree Construction</h3>
+                            <p class="text-gray-400 text-sm mb-3">
+                                Research paper on improving spatial database performance through SIMD optimizations for bulk loading of geographic data...
+                            </p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span>Mar 15, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute left-0 top-2.5 w-2 h-2 bg-custom-green rounded-full"></div>
+                        <div class="ml-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-custom-green rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                    Dev
+                                </div>
+                                <span class="ml-3 text-sm text-gray-400">Development</span>
+                            </div>
+                            <h3 class="font-semibold text-white mb-2">Portfolio v2: Refactoring Skills Section</h3>
+                            <p class="text-gray-400 text-sm mb-3">
+                                Improving the skills tab implementation with better accessibility and performance using React 18 features and virtualized lists...
+                            </p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span>Apr 5, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="mt-8 text-center">
+            <p class="text-gray-500 text-sm">Which layout option do you prefer for the news section?</p>
+        </div>
+    </div>
+</body>
+</html>

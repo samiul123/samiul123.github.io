@@ -8,5 +8,5 @@ test('renders all nav links', () => {
 
 test('renders logo', () => {
   render(<Header />);
-  expect(document.querySelector('header')).toBeInTheDocument();
+  expect(screen.getByRole('banner')).toBeInTheDocument();
 });

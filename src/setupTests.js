@@ -5,7 +5,7 @@
 import '@testing-library/jest-dom';
 
 // Mock IntersectionObserver — not available in jsdom but used by Framer Motion
-global.IntersectionObserver = class {
+globalThis.IntersectionObserver = class {
   constructor() {}
   observe() {}
   unobserve() {}
