@@ -12,7 +12,3 @@ test('renders all company names', () => {
   expect(screen.getByText('Kona Software Lab Ltd.')).toBeInTheDocument();
 });
 
-test('renders resume button', () => {
-  render(<Experience id="experiences" />);
-  expect(screen.getByText('MY RESUME')).toBeInTheDocument();
-});

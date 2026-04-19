@@ -1,6 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Skills from '../skills';
 
+vi.mock('framer-motion', async () => {
+  const actual = await vi.importActual('framer-motion');
+  return { ...actual, AnimatePresence: ({ children }) => <>{children}</> };
+});
+
 test('renders SKILLS heading', () => {
   render(<Skills id="skills" />);
   expect(screen.getByText('SKILLS')).toBeInTheDocument();
