@@ -63,6 +63,7 @@ import {Publication} from "../components/publication";
 import {Certification} from "../components/Certification";
 import {Contact} from "../components/Contact";
 import {Project} from "../components/Project";
+import {OpenSource} from "../components/OpenSource";
 
 const navLinks = [
     {
@@ -79,6 +80,11 @@ const navLinks = [
         id: 'projects',
         title: 'PROJECTS',
         route: Project
+    },
+    {
+        id: 'open-source',
+        title: 'OPEN SOURCE',
+        route: OpenSource
     },
     {
         id: 'education',

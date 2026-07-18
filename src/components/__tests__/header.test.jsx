@@ -10,3 +10,8 @@ test('renders logo', () => {
   render(<Header />);
   expect(screen.getByRole('banner')).toBeInTheDocument();
 });
+
+test('renders OPEN SOURCE nav link', () => {
+  render(<Header />);
+  expect(screen.getAllByText('OPEN SOURCE').length).toBeGreaterThan(0);
+});
