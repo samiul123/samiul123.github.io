@@ -14,6 +14,5 @@ test('renders photo', () => {
 
 test('renders CTA links', () => {
   render(<Home id="home" />);
-  expect(screen.getByText('VIEW WORK')).toBeInTheDocument();
   expect(screen.getByText('CONTACT')).toBeInTheDocument();
 });

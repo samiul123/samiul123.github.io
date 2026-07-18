@@ -42,12 +42,6 @@ const Home = (props) => {
           </motion.p>
           <motion.div variants={driftUp(0.4)} className="flex flex-wrap gap-4 mt-2">
             <a
-              href="#projects"
-              className="bg-custom-green text-black text-xs font-bold tracking-[2px] px-6 py-3 rounded hover:opacity-90 transition-opacity"
-            >
-              VIEW WORK
-            </a>
-            <a
               href="#contact"
               className="border border-[#1a1a1a] text-gray-500 text-xs tracking-[2px] px-6 py-3 rounded hover:border-[#333] hover:text-gray-300 transition-colors"
             >
