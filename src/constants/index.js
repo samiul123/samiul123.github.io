@@ -814,4 +814,18 @@ const projects = [
     },
 ]
 
-export {navLinks, skillGroups, educations, experiences, publications, certifications, contacts, projects}
+const contributions = [
+    {
+        id: 'monocle-postgres-exporter',
+        repo: 'monocle2ai/monocle',
+        repoUrl: 'https://github.com/monocle2ai/monocle',
+        prTitle: 'Add PostgreSQL span exporter',
+        prUrl: 'https://github.com/monocle2ai/monocle/pull/682',
+        date: '2026-07',
+        status: 'merged',
+        tags: ['Python', 'PostgreSQL', 'OpenTelemetry'],
+        description: 'Added a PostgreSQL span exporter that writes OpenTelemetry traces directly into a Postgres database, with batch inserts, automatic table creation, and reconnect-and-retry handling.'
+    },
+]
+
+export {navLinks, skillGroups, educations, experiences, publications, certifications, contacts, projects, contributions}
