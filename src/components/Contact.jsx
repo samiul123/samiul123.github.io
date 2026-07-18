@@ -5,7 +5,6 @@ import {close, send, sendwebp} from "../assets";
 import emailjs from '@emailjs/browser';
 import {sanitizeEmail, sanitizeMessage, sanitizeName, validateForm} from "../utils/contact";
 import ReCAPTCHA from "react-google-recaptcha";
-import {contacts} from "../constants";
 import {styles} from "../styles";
 
 export const Contact = (props) => {
@@ -206,17 +205,6 @@ export const Contact = (props) => {
                             </button>
                         </form>
                     </div>
-                    <div className="flex sm:flex-col flex-row items-center gap-2">
-                        {
-                            contacts.map((contact) => (
-                                <a key={contact.id} href={contact.url}>
-                                    <img className="w-10 h-10" src={contact.icon} alt={contact.id}/>
-                                </a>
-
-                            ))
-                        }
-                    </div>
-
                 </motion.div>
             </div>
         </div>

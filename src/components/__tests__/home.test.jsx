@@ -16,3 +16,10 @@ test('renders CTA links', () => {
   render(<Home id="home" />);
   expect(screen.getByText('CONTACT')).toBeInTheDocument();
 });
+
+test('renders social icons', () => {
+  render(<Home id="home" />);
+  expect(screen.getByAltText('linkedin')).toBeInTheDocument();
+  expect(screen.getByAltText('medium')).toBeInTheDocument();
+  expect(screen.getByAltText('gmail')).toBeInTheDocument();
+});

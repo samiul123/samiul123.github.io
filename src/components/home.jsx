@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { samiul, samiulWebp, download } from '../assets';
 import { driftUp, staggerContainer } from '../utils/motion';
 import ResumeDrawer from './ResumeDrawer';
+import { contacts } from '../constants';
 
 const Home = (props) => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -54,6 +55,13 @@ const Home = (props) => {
               RESUME
               <img src={download} alt="download" className="w-3 h-3 object-contain opacity-60" />
             </button>
+          </motion.div>
+          <motion.div variants={driftUp(0.5)} className="flex flex-row gap-4">
+            {contacts.map((contact) => (
+              <a key={contact.id} href={contact.url}>
+                <img className="w-10 h-10" src={contact.icon} alt={contact.id} />
+              </a>
+            ))}
           </motion.div>
         </div>
 
