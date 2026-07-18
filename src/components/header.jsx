@@ -66,7 +66,7 @@ function Header() {
               >
                 <a
                   href={`#${nav.id}`}
-                  className={`block px-3 py-2 text-xs tracking-[2px] transition-colors duration-300 ${
+                  className={`block px-2 py-2 text-xs tracking-[1px] transition-colors duration-300 ${
                     activeMenu === nav.id ? 'text-white' : 'text-gray-500'
                   } hover:text-white`}
                 >
@@ -75,7 +75,7 @@ function Header() {
                 {activeMenu === nav.id && (
                   <motion.div
                     layoutId="nav-underline"
-                    className="absolute bottom-0 left-3 right-3 h-[1px] bg-custom-green"
+                    className="absolute bottom-0 left-2 right-2 h-[1px] bg-custom-green"
                   />
                 )}
               </li>
