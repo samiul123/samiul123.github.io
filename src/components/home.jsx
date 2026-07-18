@@ -59,7 +59,7 @@ const Home = (props) => {
           <motion.div variants={driftUp(0.5)} className="flex flex-row gap-4">
             {contacts.map((contact) => (
               <a key={contact.id} href={contact.url}>
-                <img className="w-10 h-10" src={contact.icon} alt={contact.id} />
+                <img className="w-10 h-10 object-contain" src={contact.icon} alt={contact.id} />
               </a>
             ))}
           </motion.div>
