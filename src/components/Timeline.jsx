@@ -42,7 +42,7 @@ const Timeline = ({ items = [], label, title, id }) => (
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
-      className="max-w-3xl mx-auto"
+      className="max-w-5xl mx-auto"
     >
       <motion.p
         variants={driftUp(0)}
