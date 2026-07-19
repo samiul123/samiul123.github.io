@@ -50,10 +50,10 @@ const Home = (props) => {
             </a>
             <button
               onClick={() => setIsResumeOpen(true)}
-              className="flex items-center gap-2 border border-[#1a1a1a] text-gray-300 text-xs tracking-[2px] px-6 py-3 rounded hover:border-custom-green hover:text-custom-green transition-colors"
+              className="flex items-center gap-2 bg-custom-green text-black font-bold text-xs tracking-[2px] px-6 py-3 rounded hover:opacity-90 transition-opacity"
             >
               RESUME
-              <img src={download} alt="download" className="w-3 h-3 object-contain opacity-60" />
+              <img src={download} alt="download" className="w-3 h-3 object-contain invert opacity-80" />
             </button>
           </motion.div>
           <motion.div variants={driftUp(0.5)} className="flex flex-row gap-4">
