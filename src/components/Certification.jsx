@@ -37,11 +37,11 @@ export const Certification = (props) => (
                   alt={cert.issuer}
                   className="h-4 w-auto object-contain opacity-60"
                 />
-                <span className="text-gray-600 text-[10px] tracking-[2px] uppercase">{cert.issuer}</span>
+                <span className="text-gray-400 text-[10px] tracking-[2px] uppercase">{cert.issuer}</span>
               </div>
             )}
             <h3 className="text-white text-sm font-bold leading-snug">{cert.title}</h3>
-            <p className="text-gray-600 text-xs">{cert.issueDate ?? cert.date}</p>
+            <p className="text-gray-400 text-xs">{cert.issueDate ?? cert.date}</p>
             <a
               href={cert.credentialUrl ?? cert.url ?? cert.link}
               target="_blank"

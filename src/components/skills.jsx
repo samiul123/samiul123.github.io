@@ -28,7 +28,7 @@ const SkillCard = ({ name, images, index }) => (
         />
       </picture>
     )}
-    <span className="text-[9px] tracking-[1px] text-gray-500 text-center">{name}</span>
+    <span className="text-[9px] tracking-[1px] text-gray-300 text-center">{name}</span>
   </motion.div>
 );
 
@@ -66,7 +66,7 @@ const Skills = (props) => {
               className={`text-[9px] tracking-[2px] uppercase px-4 py-2 whitespace-nowrap border-b-2 -mb-px transition-colors ${
                 activeTab === i
                   ? 'text-custom-green border-custom-green'
-                  : 'text-gray-600 border-transparent hover:text-gray-400'
+                  : 'text-gray-400 border-transparent hover:text-gray-300'
               }`}
             >
               {TAB_LABELS[group.title]}

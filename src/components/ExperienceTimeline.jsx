@@ -33,13 +33,13 @@ const TimelineRow = ({ title, subtitle, date, images, active, isLast, onClick })
     <div className="flex items-start gap-2.5">
       <Logo images={images} alt={subtitle} className="w-6 h-6 flex-shrink-0 mt-0.5" />
       <div>
-        <h3 className={`text-sm font-bold tracking-wide transition-colors ${active ? 'text-white' : 'text-gray-500 hover:text-gray-300'}`}>
+        <h3 className={`text-sm font-bold tracking-wide transition-colors ${active ? 'text-white' : 'text-gray-300 hover:text-white'}`}>
           {title}
         </h3>
-        <p className={`text-xs tracking-[2px] uppercase mt-1 transition-colors ${active ? 'text-custom-green' : 'text-gray-600'}`}>
+        <p className={`text-xs tracking-[2px] uppercase mt-1 transition-colors ${active ? 'text-custom-green' : 'text-gray-400'}`}>
           {subtitle}
         </p>
-        <p className="text-gray-700 text-xs mt-0.5">{date}</p>
+        <p className="text-gray-400 text-xs mt-0.5">{date}</p>
       </div>
     </div>
   </button>
@@ -52,13 +52,13 @@ const DetailPanel = ({ item }) => (
       <div>
         <h3 className="text-white font-bold text-sm tracking-wide">{item.title}</h3>
         <p className="text-custom-green text-xs tracking-[2px] uppercase mt-1">{item.subtitle}</p>
-        <p className="text-gray-600 text-xs mt-1">{item.date}</p>
+        <p className="text-gray-400 text-xs mt-1">{item.date}</p>
       </div>
     </div>
     {item.bulletPoints?.length > 0 && (
       <ul className="mt-3 flex flex-col gap-2">
         {item.bulletPoints.map((bullet, i) => (
-          <li key={i} className="text-gray-500 text-xs leading-relaxed pl-4 relative before:content-['–'] before:absolute before:left-0 before:text-gray-700">
+          <li key={i} className="text-gray-300 text-xs leading-relaxed pl-4 relative before:content-['–'] before:absolute before:left-0 before:text-gray-500">
             {bullet}
           </li>
         ))}

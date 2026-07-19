@@ -37,7 +37,7 @@ export const Publication = (props) => {
                   <p className="text-gray-400 text-sm leading-relaxed">{pub.abstract}</p>
                   <button
                     onClick={() => setShowAbstract(null)}
-                    className="mt-6 text-xs tracking-[2px] text-gray-600 hover:text-white transition-colors"
+                    className="mt-6 text-xs tracking-[2px] text-gray-400 hover:text-white transition-colors"
                   >
                     ← Back
                   </button>
@@ -54,12 +54,12 @@ export const Publication = (props) => {
                       {pub.title}
                     </a>
                     <p className="text-custom-green text-xs tracking-[1px] mt-3">{pub.conference ?? pub.venue}</p>
-                    <p className="text-gray-600 text-xs mt-1">{pub.date}</p>
+                    <p className="text-gray-400 text-xs mt-1">{pub.date}</p>
                   </div>
                   {pub.abstract && (
                     <button
                       onClick={() => setShowAbstract(i)}
-                      className="flex-shrink-0 text-gray-600 hover:text-white text-xs tracking-[2px] transition-colors whitespace-nowrap"
+                      className="flex-shrink-0 text-gray-400 hover:text-white text-xs tracking-[2px] transition-colors whitespace-nowrap"
                     >
                       ABSTRACT →
                     </button>

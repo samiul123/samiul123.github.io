@@ -15,7 +15,7 @@ import { driftUp, staggerContainer } from '../utils/motion';
 const statusConfig = {
   live:     { label: 'Live',        className: 'text-custom-green bg-[rgba(0,214,70,0.08)] border border-[rgba(0,214,70,0.25)]' },
   wip:      { label: 'In Progress', className: 'text-amber-400 bg-[rgba(245,158,11,0.08)] border border-[rgba(245,158,11,0.2)]' },
-  archived: { label: 'Archived',    className: 'text-gray-600 bg-[#111] border border-[#1a1a1a]' },
+  archived: { label: 'Archived',    className: 'text-gray-400 bg-[#111] border border-[#1a1a1a]' },
 };
 
 const ProjectCard = ({ title, type, year, status, skills = [], description, githubUrl, demoUrl, index }) => {
@@ -28,7 +28,7 @@ const ProjectCard = ({ title, type, year, status, skills = [], description, gith
     >
       {/* Type eyebrow + icons */}
       <div className="flex items-center justify-between">
-        <span className="text-xs tracking-[3px] text-gray-600 uppercase">{type}</span>
+        <span className="text-xs tracking-[3px] text-gray-400 uppercase">{type}</span>
         <div className="flex gap-2">
           {githubUrl && (
             <button
@@ -42,7 +42,7 @@ const ProjectCard = ({ title, type, year, status, skills = [], description, gith
           {demoUrl && (
             <button
               onClick={() => window.open(demoUrl, '_blank')}
-              className="text-gray-600 hover:text-custom-green transition-colors text-xs tracking-[2px]"
+              className="text-gray-400 hover:text-custom-green transition-colors text-xs tracking-[2px]"
               aria-label="Demo"
             >
               ↗
@@ -59,17 +59,17 @@ const ProjectCard = ({ title, type, year, status, skills = [], description, gith
         <span className={`text-[10px] px-2 py-0.5 rounded-full tracking-[1px] ${badge.className}`}>
           {badge.label}
         </span>
-        <span className="text-gray-700 text-[10px]">{year}</span>
+        <span className="text-gray-400 text-[10px]">{year}</span>
       </div>
 
       {/* Description */}
-      <p className="text-gray-500 text-xs leading-relaxed">{description}</p>
+      <p className="text-gray-300 text-xs leading-relaxed">{description}</p>
 
       {/* Skill tags */}
       {skills.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mt-1">
           {skills.map(skill => (
-            <span key={skill} className="text-[10px] text-gray-600 bg-[#111] border border-[#1a1a1a] px-2 py-0.5 rounded">
+            <span key={skill} className="text-[10px] text-gray-400 bg-[#111] border border-[#1a1a1a] px-2 py-0.5 rounded">
               {skill}
             </span>
           ))}

@@ -28,8 +28,8 @@ const TimelineItem = ({ title, subtitle, meta, date, images, index }) => (
       <div>
         <h3 className="text-white font-bold text-sm tracking-wide">{title}</h3>
         <p className="text-custom-green text-xs tracking-[2px] uppercase mt-1">{subtitle}</p>
-        <p className="text-gray-600 text-xs mt-1">{date}</p>
-        {meta && <p className="text-gray-500 text-xs mt-0.5">{meta}</p>}
+        <p className="text-gray-400 text-xs mt-1">{date}</p>
+        {meta && <p className="text-gray-300 text-xs mt-0.5">{meta}</p>}
       </div>
     </div>
   </motion.div>

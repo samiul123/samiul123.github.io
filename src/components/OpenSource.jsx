@@ -7,7 +7,7 @@ import { driftUp, staggerContainer } from '../utils/motion';
 const statusConfig = {
   merged: { label: 'Merged', className: 'text-custom-green bg-[rgba(0,214,70,0.08)] border border-[rgba(0,214,70,0.25)]' },
   open:   { label: 'Open',   className: 'text-amber-400 bg-[rgba(245,158,11,0.08)] border border-[rgba(245,158,11,0.2)]' },
-  closed: { label: 'Closed', className: 'text-gray-600 bg-[#111] border border-[#1a1a1a]' },
+  closed: { label: 'Closed', className: 'text-gray-400 bg-[#111] border border-[#1a1a1a]' },
 };
 
 const ContributionCard = ({ repo, repoUrl, prTitle, prUrl, date, status, tags = [], description, index }) => {
@@ -21,7 +21,7 @@ const ContributionCard = ({ repo, repoUrl, prTitle, prUrl, date, status, tags = 
       <div className="flex items-center justify-between">
         <button
           onClick={() => window.open(repoUrl, '_blank')}
-          className="text-xs tracking-[3px] text-gray-600 uppercase opacity-70 hover:opacity-100 transition-opacity"
+          className="text-xs tracking-[3px] text-gray-400 uppercase opacity-70 hover:opacity-100 transition-opacity"
         >
           {repo}
         </button>
@@ -45,15 +45,15 @@ const ContributionCard = ({ repo, repoUrl, prTitle, prUrl, date, status, tags = 
         <span className={`text-[10px] px-2 py-0.5 rounded-full tracking-[1px] ${badge.className}`}>
           {badge.label}
         </span>
-        <span className="text-gray-700 text-[10px]">{date}</span>
+        <span className="text-gray-400 text-[10px]">{date}</span>
       </div>
 
-      <p className="text-gray-500 text-xs leading-relaxed">{description}</p>
+      <p className="text-gray-300 text-xs leading-relaxed">{description}</p>
 
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mt-1">
           {tags.map(tag => (
-            <span key={tag} className="text-[10px] text-gray-600 bg-[#111] border border-[#1a1a1a] px-2 py-0.5 rounded">
+            <span key={tag} className="text-[10px] text-gray-400 bg-[#111] border border-[#1a1a1a] px-2 py-0.5 rounded">
               {tag}
             </span>
           ))}

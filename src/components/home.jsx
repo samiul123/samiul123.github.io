@@ -33,7 +33,7 @@ const Home = (props) => {
           </motion.h1>
           <motion.p
             variants={driftUp(0.3)}
-            className="text-sm text-gray-500 leading-relaxed max-w-md"
+            className="text-sm text-gray-300 leading-relaxed max-w-md"
           >
             4+ years building scalable microservices, distributed systems, and production backends — alongside
             user-facing web and mobile interfaces. Graduated with an M.S. in Computer Science (August 2025)
@@ -44,13 +44,13 @@ const Home = (props) => {
           <motion.div variants={driftUp(0.4)} className="flex flex-wrap gap-4 mt-2">
             <a
               href="#contact"
-              className="border border-[#1a1a1a] text-gray-500 text-xs tracking-[2px] px-6 py-3 rounded hover:border-[#333] hover:text-gray-300 transition-colors"
+              className="border border-[#1a1a1a] text-gray-300 text-xs tracking-[2px] px-6 py-3 rounded hover:border-[#333] hover:text-white transition-colors"
             >
               CONTACT
             </a>
             <button
               onClick={() => setIsResumeOpen(true)}
-              className="flex items-center gap-2 border border-[#1a1a1a] text-gray-500 text-xs tracking-[2px] px-6 py-3 rounded hover:border-custom-green hover:text-custom-green transition-colors"
+              className="flex items-center gap-2 border border-[#1a1a1a] text-gray-300 text-xs tracking-[2px] px-6 py-3 rounded hover:border-custom-green hover:text-custom-green transition-colors"
             >
               RESUME
               <img src={download} alt="download" className="w-3 h-3 object-contain opacity-60" />

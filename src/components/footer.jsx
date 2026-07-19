@@ -3,6 +3,6 @@ export const Footer = () => (
     <span className="font-lulo text-xs tracking-[2px]">
       SAMIUL MUSHFIK<span className="text-custom-green">.</span>
     </span>
-    <span className="text-gray-600 text-xs tracking-[1px]">© 2026</span>
+    <span className="text-gray-400 text-xs tracking-[1px]">© 2026</span>
   </footer>
 );

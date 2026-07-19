@@ -67,7 +67,7 @@ function Header() {
                 <a
                   href={`#${nav.id}`}
                   className={`block px-2 py-2 text-xs tracking-[1px] transition-colors duration-300 ${
-                    activeMenu === nav.id ? 'text-white' : 'text-gray-500'
+                    activeMenu === nav.id ? 'text-white' : 'text-gray-300'
                   } hover:text-white`}
                 >
                   {nav.title}
@@ -95,7 +95,7 @@ function Header() {
             <li
               key={nav.id}
               className={`cursor-pointer text-sm tracking-[2px] transition-colors duration-300 ${
-                activeMenu === nav.id ? 'text-custom-green' : 'text-gray-500'
+                activeMenu === nav.id ? 'text-custom-green' : 'text-gray-300'
               } hover:text-white`}
               onClick={() => {
                 setActiveMenu(nav.id);
