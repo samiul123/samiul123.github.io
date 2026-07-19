@@ -1,5 +1,5 @@
 import { experiences } from '../constants';
-import Timeline from './Timeline';
+import ExperienceTimeline from './ExperienceTimeline';
 
 const parseRangeStart = (date) => {
   const start = date.split(' - ')[0].trim();
@@ -13,12 +13,12 @@ export const Experience = (props) => {
       title: exp.title,
       subtitle: exp.company,
       date: exp.date,
-      images: exp.images,
+      bulletPoints: exp.bulletPoints,
     }));
 
   return (
     <div id={props.id}>
-      <Timeline items={items} label="Career" title="EXPERIENCE" />
+      <ExperienceTimeline items={items} label="Career" title="EXPERIENCE" />
     </div>
   );
 };
