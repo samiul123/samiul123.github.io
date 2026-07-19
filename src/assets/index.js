@@ -55,6 +55,7 @@ import umd from './education/umd-logo.png';
 import umdwebp from './education/umd-logo.webp';
 
 import defaultCompany from './experience/default-company.svg';
+import mass from './experience/mass.png';
 import konasl from './experience/konasl.png';
 import konaslWebp from './experience/konasl.webp';
 import resume from './experience/resume.png';
@@ -134,6 +135,7 @@ export {
     educationBg,
     educationWebp,
     defaultCompany,
+    mass,
     konasl,
     experienceBg,
     experienceWebp,

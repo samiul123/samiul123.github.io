@@ -34,6 +34,7 @@ import {
     buet,
     umd,
     defaultCompany,
+    mass,
     konasl,
     algoxpert,
     udemy,
@@ -93,7 +94,7 @@ const navLinks = [
     },
     {
         id: 'experiences',
-        title: 'EXPERIENCES',
+        title: 'EXPERIENCE',
         route: Experience
     },
     {
@@ -539,6 +540,24 @@ const educations = [
 
 const experiences = [
     {
+        title: 'Software Developer Intern',
+        company: 'Mass Technologies LLC',
+        date: 'April 2026 - Present',
+        logo: mass,
+        images: [
+            {
+                type: "image/png",
+                srcSet: mass,
+                fallback: true
+            }
+        ],
+        bulletPoints: [
+            'Developing an AI-driven pipeline to extract structured installation requirements from manufacturer PDFs for ~1M medical devices, powering dynamic hospital infrastructure checklists.',
+            'Architected an async bulk-import pipeline using AWS Step Functions, Distributed Map, S3, and Lambda, processing 50K-row files concurrently without exhausting workflow state or backend memory.'
+            
+        ]
+    },
+    {
         title: 'Graduate Student Researcher',
         company: 'University of Minnesota - Duluth',
         date: 'August 2023 - August 2025',
@@ -595,6 +614,7 @@ const experiences = [
         ],
         bulletPoints: [
             'Shipped a high-throughput transaction processing API gateway (12K+ RPM) over Transport-Layer Protocol (TCP) for point-of-sale (POS) systems, supporting $2.5B+ annual financial flows using Java, Spring Boot, and Apache Camel.',
+            'Designed and implemented POS device authentication protocols and JWT-based session management, enabling encrypted real-time communication through mutual auth, nonce validation, AES-256 symmetric encryption, and Redis.',
             'Reduced P95 latency to sub-100ms across 1M+ daily financial transactions by optimizing distributed system bottlenecks using Redis caching, async processing, and SQL tuning.',
             'Designed a Kafka-based event-driven pipeline processing telemetry from 1K+ POS devices, improving real-time system observability and enabling faster detection of production issues.',
             'Engineered WebSocket infrastructure supporting 100K+ concurrent connections, enabling low-latency administrative operations using Nginx and Redis Pub/Sub.',
@@ -604,7 +624,7 @@ const experiences = [
         ]
     },
     {
-        title: 'Software Engineer, Part-Time, Voluntary',
+        title: 'Founding Engineer',
         company: 'Parkspace',
         date: 'August 2019 - February 2020',
         images: [
@@ -615,9 +635,8 @@ const experiences = [
             }
         ],
         bulletPoints: [
-            'Developed RESTful APIs for a parking management system using Java and Spring Boot, enabling real-time parking availability updates and reservation handling.',
-            'Implemented a secure user authentication system with JWT, enhancing data protection and access control for the application.',
-            'Collaborated with a remote team to integrate third-party payment gateways, facilitating seamless transactions for users.'
+            'Implemented core features such as park finding, reservation, cancellation, etc., for a real-time parking discovery and reservation MVP (React Native, Spring Boot, and AWS).',
+            'Maintained 80% test coverage through TDD and streamlined deployments using CircleCI-based CI/CD pipeline.'
         ]
     }
 ]
