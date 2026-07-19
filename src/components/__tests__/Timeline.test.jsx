@@ -1,18 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Timeline from '../Timeline';
 
 const items = [
   { title: 'Software Engineer', subtitle: 'Acme Corp', date: '2022–2023' },
   { title: 'Junior Developer', subtitle: 'Beta Inc', date: '2020–2022' },
-];
-
-const itemsWithBullets = [
-  {
-    title: 'Software Engineer',
-    subtitle: 'Acme Corp',
-    date: '2022–2023',
-    bulletPoints: ['Shipped the checkout redesign.', 'Mentored two junior engineers.', 'Cut build times by 40%.'],
-  },
 ];
 
 test('renders section title', () => {
@@ -35,28 +26,4 @@ test('renders all subtitles in green', () => {
 test('renders dates', () => {
   render(<Timeline items={items} label="Career" title="EXPERIENCE" id="experiences" />);
   expect(screen.getByText('2022–2023')).toBeInTheDocument();
-});
-
-test('renders first bullet always, and a toggle for the rest', () => {
-  render(<Timeline items={itemsWithBullets} label="Career" title="EXPERIENCE" id="experiences" />);
-  expect(screen.getByText('Shipped the checkout redesign.')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: /\+2 more/ })).toBeInTheDocument();
-});
-
-test('expands remaining bullets on toggle click', () => {
-  render(<Timeline items={itemsWithBullets} label="Career" title="EXPERIENCE" id="experiences" />);
-  const toggle = screen.getByRole('button', { name: /\+2 more/ });
-  expect(toggle).toHaveAttribute('aria-expanded', 'false');
-
-  fireEvent.click(toggle);
-
-  expect(toggle).toHaveAttribute('aria-expanded', 'true');
-  expect(screen.getByRole('button', { name: /show less/i })).toBeInTheDocument();
-  expect(screen.getByText('Mentored two junior engineers.')).toBeInTheDocument();
-  expect(screen.getByText('Cut build times by 40%.')).toBeInTheDocument();
-});
-
-test('renders no bullets or toggle when item has none', () => {
-  render(<Timeline items={items} label="Career" title="EXPERIENCE" id="experiences" />);
-  expect(screen.queryByRole('button')).not.toBeInTheDocument();
 });

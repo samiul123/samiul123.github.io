@@ -14,7 +14,6 @@ export const Experience = (props) => {
       subtitle: exp.company,
       date: exp.date,
       images: exp.images,
-      bulletPoints: exp.bulletPoints,
     }));
 
   return (
