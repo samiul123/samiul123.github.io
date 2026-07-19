@@ -13,6 +13,7 @@ export const Experience = (props) => {
       title: exp.title,
       subtitle: exp.company,
       date: exp.date,
+      images: exp.images,
       bulletPoints: exp.bulletPoints,
     }));
 

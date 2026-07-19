@@ -2,7 +2,23 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { driftUp, staggerContainer } from '../utils/motion';
 
-const TimelineRow = ({ title, subtitle, date, active, isLast, onClick }) => (
+const Logo = ({ images, alt, className }) => {
+  if (!images) return null;
+  return (
+    <picture className={className}>
+      {images.map((img, i) => (
+        <source key={i} type={img.type} srcSet={img.srcSet} />
+      ))}
+      <img
+        src={(images.find(img => img.fallback) ?? images[images.length - 1])?.srcSet}
+        alt={alt}
+        className={`${className} object-contain opacity-70`}
+      />
+    </picture>
+  );
+};
+
+const TimelineRow = ({ title, subtitle, date, images, active, isLast, onClick }) => (
   <button
     type="button"
     onClick={onClick}
@@ -14,21 +30,31 @@ const TimelineRow = ({ title, subtitle, date, active, isLast, onClick }) => (
     {/* Dot */}
     <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-custom-green ring-2 ring-custom-dark" />
 
-    <h3 className={`text-sm font-bold tracking-wide transition-colors ${active ? 'text-white' : 'text-gray-500 hover:text-gray-300'}`}>
-      {title}
-    </h3>
-    <p className={`text-xs tracking-[2px] uppercase mt-1 transition-colors ${active ? 'text-custom-green' : 'text-gray-600'}`}>
-      {subtitle}
-    </p>
-    <p className="text-gray-700 text-xs mt-0.5">{date}</p>
+    <div className="flex items-start gap-2.5">
+      <Logo images={images} alt={subtitle} className="w-6 h-6 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className={`text-sm font-bold tracking-wide transition-colors ${active ? 'text-white' : 'text-gray-500 hover:text-gray-300'}`}>
+          {title}
+        </h3>
+        <p className={`text-xs tracking-[2px] uppercase mt-1 transition-colors ${active ? 'text-custom-green' : 'text-gray-600'}`}>
+          {subtitle}
+        </p>
+        <p className="text-gray-700 text-xs mt-0.5">{date}</p>
+      </div>
+    </div>
   </button>
 );
 
 const DetailPanel = ({ item }) => (
   <div>
-    <h3 className="text-white font-bold text-sm tracking-wide">{item.title}</h3>
-    <p className="text-custom-green text-xs tracking-[2px] uppercase mt-1">{item.subtitle}</p>
-    <p className="text-gray-600 text-xs mt-1">{item.date}</p>
+    <div className="flex items-start gap-3">
+      <Logo images={item.images} alt={item.subtitle} className="w-8 h-8 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="text-white font-bold text-sm tracking-wide">{item.title}</h3>
+        <p className="text-custom-green text-xs tracking-[2px] uppercase mt-1">{item.subtitle}</p>
+        <p className="text-gray-600 text-xs mt-1">{item.date}</p>
+      </div>
+    </div>
     {item.bulletPoints?.length > 0 && (
       <ul className="mt-3 flex flex-col gap-2">
         {item.bulletPoints.map((bullet, i) => (
@@ -69,6 +95,7 @@ const ExperienceTimeline = ({ items = [], label, title, id }) => {
                 title={item.title}
                 subtitle={item.subtitle}
                 date={item.date}
+                images={item.images}
                 active={i === selected}
                 isLast={i === items.length - 1}
                 onClick={() => setSelected(i)}
