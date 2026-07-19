@@ -73,7 +73,7 @@ export const OpenSource = (props) => (
       className="max-w-5xl mx-auto"
     >
       <motion.p variants={driftUp(0)} className="text-xs tracking-[4px] text-custom-green uppercase mb-3">
-        — Open Source
+        — Contributions
       </motion.p>
       <motion.h2
         variants={driftUp(0.05)}
