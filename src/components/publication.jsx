@@ -13,7 +13,7 @@ export const Publication = (props) => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-3xl mx-auto"
+        className="max-w-5xl mx-auto"
       >
         <motion.p variants={driftUp(0)} className="text-xs tracking-[4px] text-custom-green uppercase mb-3">
           — Research
